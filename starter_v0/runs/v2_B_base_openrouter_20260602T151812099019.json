@@ -1,0 +1,1169 @@
+{
+  "run_id": "v2_B_base_openrouter_20260602T151812099019",
+  "version": "v2",
+  "artifact_version": "v2+pc66bd3af8684+tce2042504c70",
+  "prompt_hash": "c66bd3af868464767fface43ca006152ebe6188e07fcc92f8b1ef7061bc2e31b",
+  "tools_hash": "ce2042504c70faa4b5be0a65458d75f28e8f598e4f1dc3dd68a1339654a3e756",
+  "phase": "B",
+  "suite": "base",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "F:\\AI thuc chien\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "F:\\AI thuc chien\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-06-02T15:18:12",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_user_tweets_handle_map",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_user_tweets_name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Map tên Andrej Karpathy → handle karpathy, trích đúng limit=5, gọi get_user_tweets."
+      },
+      "input": "Cho mình xem 5 tweet mới nhất của Andrej Karpathy",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "karpathy",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "karpathy",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "karpathy",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "karpathy",
+            "items": [
+              {
+                "title": "Personal update: I've joined Anthropic. I think the next few years at the frontier of LLMs will be especially formative.",
+                "summary": "Personal update: I've joined Anthropic. I think the next few years at the frontier of LLMs will be especially formative. I am very excited to join the team here and get back to R&amp;D. I remain deeply passionate about education and plan to resume my work on it in time.",
+                "url": "https://x.com/karpathy/status/2056753169888334312",
+                "source": "@karpathy",
+                "date": "Tue May 19 15:05:42 +0000 2026",
+                "metrics": {
+                  "favorites": 149511,
+                  "retweets": 11162,
+                  "views": "27352789"
+                }
+              },
+              {
+                "title": "This works really well btw, at the end of your query ask your LLM to \"structure your response as HTML\", then view the ge",
+                "summary": "This works really well btw, at the end of your query ask your LLM to \"structure your response as HTML\", then view the generated file in your browser. I've also had some success asking the LLM to present its output as slideshows, etc.\n\nMore generally, imo audio is the human-preferred input to AIs but vision (images/animations/video) is the preferred output from them. Around a ~third of our brains are a massively parallel processor dedicated to vision, it is the 10-lane superhighway of information into brain. As AI improves, I think we'll see a progression that takes advantage:\n\n1) raw text (hard/effortful to read)\n2) markdown (bold, italic, headings, tables, a bit easier on the eyes) <-- current default\n3) HTML (still procedural with underlying code, but a lot more flexibility on the graphics, layout, even interactivity) <-- early but forming new good default\n...4,5,6,...\nn) interactive neural videos/simulations\n\nImo the extrapolation (though the technology doesn't exist just yet) ends in some kind of interactive videos generated directly by a diffusion neural net. Many open questions as to how exact/procedural \"Software 1.0\" artifacts (e.g. interactive simulations) may be woven together with neural artifacts (diffusion grids), but generally something in the direction of the recently viral https://t.co/z21CP5iQfu\n\nThere are also improvements necessary and pending at the input. Audio nor text nor video alone are not enough, e.g. I feel a need to point/gesture to things on the screen, similar to all the things you would do with a person physically next to you and your computer screen.\n\nTLDR The input/output mind meld between humans and AIs is ongoing and there is a lot of work to do and significant progress to be made, way before jumping all the way into neuralink-esque BCIs and all that. For what's worth exploring at the current stage, hot tip try ask for HTML.",
+                "url": "https://x.com/karpathy/status/2053872850101285137",
+                "source": "@karpathy",
+                "date": "Mon May 11 16:20:21 +0000 2026",
+                "metrics": {
+                  "favorites": 19140,
+                  "retweets": 2014,
+                  "views": "3751978"
+                }
+              },
+              {
+                "title": "This is the the quote I've been citing a lot recently.",
+                "summary": "This is the the quote I've been citing a lot recently.",
+                "url": "https://x.com/karpathy/status/2049907410303865030",
+                "source": "@karpathy",
+                "date": "Thu Apr 30 17:43:06 +0000 2026",
+                "metrics": {
+                  "favorites": 46518,
+                  "retweets": 4366,
+                  "views": "2553872"
+                }
+              },
+              {
+                "title": "Fireside chat at Sequoia Ascent 2026 from a ~week ago. Some highlights:",
+                "summary": "Fireside chat at Sequoia Ascent 2026 from a ~week ago. Some highlights:\n\nThe first theme I tried to push on is that LLMs are about a lot more than just speeding up what existed before (e.g. coding). Three examples of new horizons:\n\n1. menugen: an app that can be fully engulfed by LLMs, with no classical code needed: input an image, output an image and an LLM can natively do the thing.\n2. install .md skills instead of install .sh scripts. Why create a complex Software 1.0 bash script for e.g. installing a piece of software if you can write the installation out in words and say \"just show this to your LLM\".  The LLM is an advanced interpreter of English and can intelligently target installation to your setup, debug everything inline, etc.\n3. LLM knowledge bases as an example of something that was *impossible* with classical code because it's computation over unstructured data (knowledge) from arbitrary sources and in arbitrary formats, including simply text articles etc.\n\nI pushed on these because in every new paradigm change, the obvious things are always in the realm of speeding up or somehow improving what existed, but here we have examples of functionality that either suddenly perhaps shouldn't even exist (1,2), or was fundamentally not possible before (3).\n\nThe second (ongoing) theme is trying to explain the pattern of jaggedness in LLMs. How it can be true that a single artifact will simultaneously 1) coherently refactor a 100,000-line code base *and* 2) tell you to walk to the car wash to wash your car. I previously wrote about the source of this as having to do with verifiability of a domain, here I expand on this as having to also do with economics because revenue/TAM dictates what the frontier labs choose to package into training data distributions during RL. You're either in the data distribution (on the rails of the RL circuits) and flying or you're off-roading in the jungle with a machete, in relative terms. Still not 100% satisfied with this, but it's an ongoing struggle to build an accurate model of LLM capabilities if you wish to practically take advantage of their power while avoiding their pitfalls, which brings me to...\n\nLast theme is the agent-native economy. The decomposition of products and services into sensors, actuators and logic (split up across all of 1.0/2.0/3.0 computing paradigms), how we can make information maximally legible to LLMs, some words on the quickly emerging agentic engineering and its skill set, related hiring practices, etc., possibly even hints/dreams of fully neural computing handling the vast majority of computation with some help from (classical) CPU coprocessors.",
+                "url": "https://x.com/karpathy/status/2049903821095354523",
+                "source": "@karpathy",
+                "date": "Thu Apr 30 17:28:50 +0000 2026",
+                "metrics": {
+                  "favorites": 6044,
+                  "retweets": 794,
+                  "views": "1164899"
+                }
+              },
+              {
+                "title": "RT @status_effects: New work with @AlecRad and @DavidDuvenaud:",
+                "summary": "RT @status_effects: New work with @AlecRad and @DavidDuvenaud:\n\nHave you ever dreamed of talking to someone from the past? Introducing talk…",
+                "url": "https://x.com/karpathy/status/2049180863036813717",
+                "source": "@karpathy",
+                "date": "Tue Apr 28 17:36:04 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 391,
+                  "views": "84"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_search_tweets_latest",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_search_type",
+        "difficulty": "medium",
+        "what_it_tests": "'mới nhất' → search_type=Latest, không phải Top."
+      },
+      "input": "Tìm các tweet mới nhất về Gemini AI",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Gemini AI",
+              "search_type": "Latest"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Gemini AI",
+              "search_type": "Latest"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "Gemini AI",
+            "search_type": "Latest"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "Gemini AI",
+            "search_type": "Latest",
+            "items": [
+              {
+                "title": "Just had to hot-swap the entire GM-Copilot Masterwork Engine to a new AI architecture mid-deployment. 😅",
+                "summary": "Just had to hot-swap the entire GM-Copilot Masterwork Engine to a new AI architecture mid-deployment. 😅\n\nWe hit a wall when we realized Google Cloud permanently deprecated the legacy Gemini 1.5 models we were using for our spatial extraction. Ten minutes later, we refactored the routing to the new 2.5 Pro/Flash models, squashed a lingering telemetry bug, and the cloud pipeline is officially green again. 🟩\n\nNext stop: Extracting the Tunnel Goons JSON and getting it live on DriveThruRPG. We are so back! 🚀⚔️\n\n#BuildInPublic #AIEngineering #TTRPG #IndieDev",
+                "url": "https://x.com/CalebMccombs2/status/2061723697443160190",
+                "source": "@CalebMccombs2",
+                "date": "Tue Jun 02 08:16:49 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "4"
+                }
+              },
+              {
+                "title": "AIに聞いたら意見食い違ってる",
+                "summary": "AIに聞いたら意見食い違ってる\nいやOmnia Essentials買って正解なのは一致してるけど\nGeminiはOlympus7:Omnia3にしろと言うけど\nCoPilotはOmniaメインでOlympus裏方にしろ\nチャッピーはよくわからん😅",
+                "url": "https://x.com/nanjasorea/status/2061723671891480589",
+                "source": "@nanjasorea",
+                "date": "Tue Jun 02 08:16:43 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "1"
+                }
+              },
+              {
+                "title": "「Geminiを毎日触っているのに稼げない」と悩む人へ。",
+                "summary": "「Geminiを毎日触っているのに稼げない」と悩む人へ。\n\nAI副業で最初に狙うべきは月3万ではなく月1000円です。\n\n今日からすぐ動けるよう、AIを生活インフラに落とし込む具体的な手順をまとめました。\n\n7日間の行動プランと、そのまま使えるプロンプト付き。リンクは👇️ https://t.co/WjZmCuefoa",
+                "url": "https://x.com/ADAKEN/status/2061723567147090414",
+                "source": "@ADAKEN",
+                "date": "Tue Jun 02 08:16:18 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "1"
+                }
+              },
+              {
+                "title": "صار لي يومين من انتهى اشتراكي في GPT",
+                "summary": "صار لي يومين من انتهى اشتراكي في GPT\n\nقلت بما إن عندي اشتراك Gemini و Claude فما يحتاج أجدد في GPT…\n\nللأسف مافي برنامج Ai مثل GPT للدردشة اليومية والاستشارة… الـ GOAT \n\nعودة العلاقات 🤝🏼 https://t.co/vzZtgtkScF",
+                "url": "https://x.com/SultAlfaifi/status/2061723393041273018",
+                "source": "@SultAlfaifi",
+                "date": "Tue Jun 02 08:15:36 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "36"
+                }
+              },
+              {
+                "title": "俺のGeminiは絶対にハルシネーションなんて起こさないようにプロンプトを練って訓練した。AIって結局使う人の能力によって決まるからな。AIに舐められてコイツは嘘言っとけばいいやってならないようにしないと。 https://t.co/qZz",
+                "summary": "俺のGeminiは絶対にハルシネーションなんて起こさないようにプロンプトを練って訓練した。AIって結局使う人の能力によって決まるからな。AIに舐められてコイツは嘘言っとけばいいやってならないようにしないと。 https://t.co/qZzeZqDfKZ",
+                "url": "https://x.com/Grandstock92/status/2061723231334310171",
+                "source": "@Grandstock92",
+                "date": "Tue Jun 02 08:14:57 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "6"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_read_url_no_search",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_read_url",
+        "difficulty": "easy",
+        "what_it_tests": "Có link cụ thể → read_url, không gọi web_search."
+      },
+      "input": "Đọc và tóm tắt nội dung trang này: https://deepmind.google/technologies/gemini/",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://deepmind.google/technologies/gemini/"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://deepmind.google/technologies/gemini/"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://deepmind.google/technologies/gemini/"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://deepmind.google/technologies/gemini/",
+            "items": [
+              {
+                "title": "Gemini 3.5 — Google DeepMind",
+                "url": "https://deepmind.google/technologies/gemini/",
+                "source": "deepmind.google",
+                "summary": "[Skip to main content](https://deepmind.google/models/gemini/#page-content)\n\nSlide 1 of 5\n\n# Gemini 3.5\n\nFrontier intelligence with action\n\n[Try in Gemini](https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=) [Try in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.5-flash-preview&utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=)\n\n![](https://lh3.googleusercontent.com/e3pp8EKwmNJ3yUK42zgmBeuzaMRSS1T8IVEVL6l71HdVabDKP0hjv4eMtt6WtfPfuv0AtRO7w_r55Wl-szHeuoGraomD7kHOKo1gfjFZ62cLWX8hxQ=w1440-h810-n-nu)![](https://lh3.googleusercontent.com/ttFcbpQAW-DKOP2GrP_dEzHVzW0ckpb4rsp-T8Wlu_8Wd-icOKfrmIwU1jLhQbp5swPqD6qtzJ53pPpA5THm4Rsl6DfR3ojfYqLu4HqMxxvXaq_6oe0=w1440-h810-n-nu)\n\nYour browser does not support the video tag.\n\n## Gemini 3.5 Flash\n\nFrontier performance for agents and coding\n\n[Try in Gemini](https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=) [Learn more](https://deepmind.google/models/gemini/flash/)\n\n![](https://lh3.googleusercontent.com/6EOppy0fWVPRZUjMid9LsuLb-s1QC7o-TgYb7R5Z6yq4hoY7tBPDLdjRrleUcS7CAtjTwbEfhu9vcH-BU_KxoSRonMoUnvABUx8nCr-vFeAwpaJggg=w1440-h810-n-nu)![](https://lh3.googleusercontent.com/_RP1Z9ctjPraSvFey1Y6BCzCfAA0Sox9dPQCp1g39k-UaUtFqAlv1LrbG4wB0bxX07vH6SJwPZerIG1gnV7brBCqdjp3je8X9xHjHRpU3LMAu_jWqA=w1440-h810-n-nu)\n\nYour browser does not support the video tag.\n\n3.5 Pro coming soon\n\n## Gemini 3.1 Pro\n\nBest for complex tasks and bringing creative concepts to life\n\n[Try in Gemini](https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=) [Learn more](https://deepmind.google/models/gemini/pro/)\n\n![](https://lh3.googleusercontent.com/B7n2wxKA0dX0drw2Tc4Xa7wB8LvynFWtZBdXNZ3B5qPM8vv_9q_TOAOboPPB4rmUOlWzW9YECJAmAjeRoI3Pp5mFLbtjej8C1mYOVXsIE-zgzS_Q4A=w1440-h810-n-nu)![](https://lh3.googleusercontent.com/SsnIEMERTAa5o9ykV_c3dyLARXVpT3C28Apo1QaUJHtXI-O3kVLuY2qezJxnVW4heogJgYZftJANhjWwXM0MBN8ya5EY71tHsv2_Ir5lTzMx2bLaMw=w1440-h810-n-nu)\n\nYour browser does not support the video tag.\n\n## Gemini 3.1 Deep Think\n\nBest for modern challenges across science, research and engineering\n\n[Try in Gemini](https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=) [Learn more](https://deepmind.google/models/gemini/deep-think/)\n\n![](https://lh3.googleusercontent.com/4bMjaXaUG0m2gie-8vuEYhngHhlM8ulBU7FQvPWz5Av_7H838-kyQaGHWGAzpjniAPjNtMSMbGjSnmP7lDn5Yl-95gu-gR0hORVnyG7KVJ6hmWz5SQ=w1440-h810-n-nu)![](https://lh3.googleusercontent.com/WsvXB7KWDP0XmgPREThOmLqBcvemBbXsQwx5-cq0enA0I5yvX2EJGy2mrYebacx2WmIR7_Rx2N-nBJMsPRi5BKYiygovFdwRRM6SIpNuJWFaJYFpWQ=w1440-h810-n-nu)\n\nYour browser does not support the video tag.\n\n## Gemini 3.1 Flash-Lite\n\nBest for high-volume tasks that need efficiency and intelligence\n\n[Try in Gemini](https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=) [Learn more](https://deepmind.google/models/gemini/flash-lite/)\n\n![](https://lh3.googleusercontent.com/PbvGLuuM6em_r3_GGtqIIK4UyGQzhg4oDB-CJ2ory2hRhcPuSZYC_qLroEG-iVPIsaUPdkfCbcbHHgn3Epi53nbOaA3c7t8F3v4rVcfXN6iwBHxB3NU=w1440-h810-n-nu)![](https://lh3.googleusercontent.com/yvQmyI8iJ0cWhZlJX_axwYcYZ2TaTTIkJ_oDPQaphUxJGziC18YUzPOqZ2GLsjqhV5L3jvbF3gSz3uencgjYOSOOEYr8Upon96b41qLuatgmOnPzkbg=w1440-h810-n-nu)\n\nYour browser does not support the video tag.\n\nExplore the latest\n\nIntroducing our latest series of models combining frontier intelligence with action. Build more capable, intelligent agents.\n\n- [Models](https://deepmind.google/models/gemini/#models)\n- [Capabilities](https://deepmind.google/models/gemini/#capabilities)\n- [Performance](https://deepmind.google/models/gemini/#performance)\n- [Hands-on](https://deepmind.google/models/gemini/#hands-on)\n- [Showcase](https://deepmind.google/models/gemini/#showcase)\n- [Safety](https://deepmind.google/models/gemini/#safety)\n- [Ecosystem]("
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_out_of_scope_weather",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "out_of_scope",
+        "difficulty": "easy",
+        "what_it_tests": "Câu hỏi thời tiết ngoài phạm vi research/news → KHÔNG gọi tool, từ chối/định hướng."
+      },
+      "input": "Thời tiết Hà Nội ngày mai thế nào?",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Tôi không thể cung cấp thông tin về thời tiết. Bạn có thể kiểm tra dự báo thời tiết trên các trang web hoặc ứng dụng thời tiết.",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G05_parallel_user_and_search",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "parallel_tool_calls",
+        "difficulty": "hard",
+        "what_it_tests": "Một request cần hai nguồn: get_user_tweets(ylecun) song song với search_tweets(AI safety)."
+      },
+      "input": "Lấy tweet của Yann LeCun và tìm thêm tweet chủ đề AI safety.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "ylecun"
+            }
+          },
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI safety"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "ylecun",
+              "limit": 5
+            }
+          },
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI safety",
+              "search_type": "Top",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "ylecun",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "ylecun",
+            "items": [
+              {
+                "title": "RT @KenRoth: Trump claims to have mastered the “Art of the Deal,” but he has just given us a master class in negotiating",
+                "summary": "RT @KenRoth: Trump claims to have mastered the “Art of the Deal,” but he has just given us a master class in negotiating incompetence. I ex…",
+                "url": "https://x.com/ylecun/status/2061625600486347163",
+                "source": "@ylecun",
+                "date": "Tue Jun 02 01:47:00 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 65,
+                  "views": null
+                }
+              },
+              {
+                "title": "RT @EricTopol: Big progress vs cancer, folks.",
+                "summary": "RT @EricTopol: Big progress vs cancer, folks.\nThe kind of event curves from randomized trials that we've not seen before for a couple of th…",
+                "url": "https://x.com/ylecun/status/2061625429077770305",
+                "source": "@ylecun",
+                "date": "Tue Jun 02 01:46:20 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 246,
+                  "views": "1"
+                }
+              },
+              {
+                "title": "RT @NYUDataScience: Eero P. Simoncelli, CDS founding member and professor, was elected to the National Academy of Scienc",
+                "summary": "RT @NYUDataScience: Eero P. Simoncelli, CDS founding member and professor, was elected to the National Academy of Sciences, recognizing “di…",
+                "url": "https://x.com/ylecun/status/2061556789863158097",
+                "source": "@ylecun",
+                "date": "Mon Jun 01 21:13:35 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 5,
+                  "views": "3"
+                }
+              },
+              {
+                "title": "RT @RepMikeLevin: Let me get this straight.  ",
+                "summary": "RT @RepMikeLevin: Let me get this straight.  \n \nHoward Lutnick, Trump’s Commerce Secretary, got caught lying about his relationship with Je…",
+                "url": "https://x.com/ylecun/status/2061554814547288168",
+                "source": "@ylecun",
+                "date": "Mon Jun 01 21:05:44 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 5476,
+                  "views": "4"
+                }
+              },
+              {
+                "title": "RT @XAMTO_AI: 卧槽！你随便扔一首 YouTube 歌，它就能直接拆成 6 条独立音轨——人声、鼓、贝斯、吉他、钢琴、其他……全给你扒出来！",
+                "summary": "RT @XAMTO_AI: 卧槽！你随便扔一首 YouTube 歌，它就能直接拆成 6 条独立音轨——人声、鼓、贝斯、吉他、钢琴、其他……全给你扒出来！\n\n这工具叫 StemDeck，GitHub 开源项目，本地跑全程不上传、不注册、不花钱！它基于 Demucs 模型，拆完后给…",
+                "url": "https://x.com/ylecun/status/2061468927536791850",
+                "source": "@ylecun",
+                "date": "Mon Jun 01 15:24:27 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 661,
+                  "views": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "AI safety",
+            "search_type": "Top",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "AI safety",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "IF YOU ARE SHIPPING AI AGENTS TO REAL USERS WITHOUT A SAFETY TEST SUITE, YOU ARE ONE EDGE CASE AWAY FROM AN INCIDENT.",
+                "summary": "IF YOU ARE SHIPPING AI AGENTS TO REAL USERS WITHOUT A SAFETY TEST SUITE, YOU ARE ONE EDGE CASE AWAY FROM AN INCIDENT.\n\nMicrosoft just released RAMPART — a pytest framework for testing AI agent safety.\n\nAdversarial attacks.\nBenign failure modes.\nHarm category testing.\nAssertion-based evaluation.\n\n100% pytest-native. No new tooling. Fits your existing test suite today.\n\nThe developers who add this before shipping will sleep better.\n\nThe ones who skip it will find out why it matters the hard way.",
+                "url": "https://x.com/cyrilXBT/status/2059895715095364057",
+                "source": "@cyrilXBT",
+                "date": "Thu May 28 07:13:04 +0000 2026",
+                "metrics": {
+                  "favorites": 83,
+                  "retweets": 12,
+                  "views": "4318"
+                }
+              },
+              {
+                "title": "The Trump administration canceled its AI safety executive order last week, with the White House citing competitiveness c",
+                "summary": "The Trump administration canceled its AI safety executive order last week, with the White House citing competitiveness concerns and a source telling reporters the President simply dislikes regulation. @m_bourgon's argument in this clip makes clear what gets lost in that framing.\n\nBourgon does not treat legal, technical, and institutional guardrails as obstacles to AI progress. He treats them as preconditions for it — the mechanisms that allow organizations and governments to maintain meaningful oversight as systems become more capable and more autonomous. His argument is structural: without those mechanisms in place before capability thresholds are crossed, the window to impose them closes.\n\nThe executive order that was canceled would have established pre-release vetting for advanced models — a relatively early-stage intervention by any governance standard. Its cancellation, driven in part by direct calls from leading AI company executives, illustrates exactly the dynamic Bourgon cautions against: the entities with the most to gain from unencumbered deployment having disproportionate influence over the rules that would govern them.\n\nAs state and international frameworks move to fill the federal vacuum, the question for institutional decision-makers is whether a patchwork of regulatory regimes is more or less manageable than the coherent federal framework that was just abandoned.\n\nWe've put a link to the full episode with Malo Bourgon, CEO of the @MIRIBerkeley, and our hosts Autria Godfrey and @Laila_Rizvi in the first comment.\n\n#AIRisk #WillAIDestroyHumanity #AIDoomsday #AIOffSwitch #AISafety",
+                "url": "https://x.com/AoT_WE/status/2061458172150202527",
+                "source": "@AoT_WE",
+                "date": "Mon Jun 01 14:41:42 +0000 2026",
+                "metrics": {
+                  "favorites": 2,
+                  "retweets": 0,
+                  "views": "32"
+                }
+              },
+              {
+                "title": "ELON MUSK REVEALED HIS ENTIRE PHILOSOPHY ON AI SAFETY.",
+                "summary": "ELON MUSK REVEALED HIS ENTIRE PHILOSOPHY ON AI SAFETY.\n\nNOT GUARDRAILS. NOT CENSORSHIP. NOT KILL SWITCHES.\n\nBUT AN AI DESIGNED TO SEEK TRUTH ABOVE EVERYTHING ELSE.\n\n“YOU DEFINITELY DON’T WANT TO TEACH AN AI TO LIE.”\n\nTHE REAL DANGER ISN’T SUPERINTELLIGENCE.\nIT’S SUPERINTELLIGENCE TRAINED TO DISTORT REALITY.",
+                "url": "https://x.com/Vivek4real_/status/2059966918162042943",
+                "source": "@Vivek4real_",
+                "date": "Thu May 28 11:56:00 +0000 2026",
+                "metrics": {
+                  "favorites": 319,
+                  "retweets": 82,
+                  "views": "19079"
+                }
+              },
+              {
+                "title": "🇺🇸 Attorney General of Florida blasts Sam Altman and ChatGPT:",
+                "summary": "🇺🇸 Attorney General of Florida blasts Sam Altman and ChatGPT:\n\n“They have chosen the AI race over the safety and security of our kids. They have chosen profit over public safety.”\n\nHe cited cases where ChatGPT allegedly encouraged suicide and violence, including telling one user “Rest easy, King. You did good” before he shot himself.\n\nUthmeier is drawing a hard line saying AI companies can’t keep pushing addictive, dangerous products on young people while chasing profits.\n\nThe push for serious AI regulation is gaining steam.\n\nSource: FL Voice News",
+                "url": "https://x.com/MarioNawfal/status/2061578488247665086",
+                "source": "@MarioNawfal",
+                "date": "Mon Jun 01 22:39:48 +0000 2026",
+                "metrics": {
+                  "favorites": 46,
+                  "retweets": 11,
+                  "views": "14849"
+                }
+              },
+              {
+                "title": "Florida has become the first US state to sue OpenAI and Sam Altman over ChatGPT's alleged links to violent crimes, suici",
+                "summary": "Florida has become the first US state to sue OpenAI and Sam Altman over ChatGPT's alleged links to violent crimes, suicide, and harms involving minors. OpenAI strongly disputes the allegations and says it has implemented extensive safety protections in its products. NDTV's AI Editor Ramarko Sengupta explains.",
+                "url": "https://x.com/ndtv/status/2061721277661122743",
+                "source": "@ndtv",
+                "date": "Tue Jun 02 08:07:12 +0000 2026",
+                "metrics": {
+                  "favorites": 2,
+                  "retweets": 0,
+                  "views": "503"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_multiturn_missing_topic",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_clarify_fill",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry timeframe=month từ lượt 1, bổ sung query=blockchain từ lượt 2, xác nhận ở lượt 3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tin tức trong tháng này giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Về chủ đề blockchain"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm blockchain thôi, vẫn là tháng này nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "blockchain",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "blockchain",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "blockchain",
+            "topic": "news",
+            "timeframe": "month"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "blockchain",
+            "topic": "news",
+            "timeframe": "month",
+            "items": [
+              {
+                "title": "How startup Propy is deploying $100 million to put real estate deals on the blockchain - CNBC",
+                "url": "https://www.cnbc.com/2026/05/07/startup-propy-real-estate-deals-blockchain.html",
+                "source": "cnbc.com",
+                "summary": "# How startup Propy is deploying $100 million to put real estate deals on the blockchain. * Propy, a Miami-based blockchain technology, has been trying to modernize the closing process for residential homes. * Propy is also using its new funding to develop an AI agent to help facilitate deals. Propy, a Miami-based blockchain technology company that launched in 2017, has been trying to modernize the closing process and recently got a big financial boost to do it. \"We have this conviction that blockchain is the next phenomenon after the internet,\" said Natalia Karayaneva, founder and CEO of Propy. Meet Avery Propy is also using its new funding to develop an AI agent to help facilitate deals. \"Real estate developers and REITs started to reach out to Propy, because we've established this brand for so many years with our strong conviction that there was a way to legally accept cryptocurrencies in real estate, to legally record these on blockchain and in the county, of course,\" said Karayaneva.",
+                "score": 0.9184803
+              },
+              {
+                "title": "KBank partners Ant International to build blockchain USD rail in Thailand - FinTech Futures",
+                "url": "https://www.fintechfutures.com/blockchain-crypto-digital-assets/kbank-partners-ant-international-to-build-blockchain-usd-rail-in-thailand",
+                "source": "fintechfutures.com",
+                "summary": "# KBank partners Ant International to build blockchain USD rail in Thailand. The project will use JP Morgan’s Kinexys blockchain architecture to process 24/7 cross-border USD transactions and manage regional liquidity. Kasikornbank (KBank) has inked a new memorandum of understanding to develop cross-border payment and liquidity infrastructure for. A joint statement says the project will \"combine KBank’s regulated financial capabilities with Ant International’s financial AI solutions\" to offer cross-border USD transactions with real-time settlement. A third partner, JP Morgan Payments, is providing the project with blockchain deposit accounts through its blockchain business. This latest blockchain settlement model outlined in their most recent MoU builds directly upon the Project Carina pilot from 2024, when KBank and Ant International used the same JP Morgan architecture to test internal cross-border remittance mechanisms. Tyler Pathe is a financial reporter, moderator and investigator with a specific interest in financial technology, banking and the financial industry's latest innovations.",
+                "score": 0.91117966
+              },
+              {
+                "title": "Blockchain in Agriculture Market is expected to Hit US$ 7,866.84 - openPR.com",
+                "url": "https://www.openpr.com/news/4516333/blockchain-in-agriculture-market-is-expected-to-hit-us-7-866-84",
+                "source": "openpr.com",
+                "summary": "# Blockchain in Agriculture Market is expected to Hit US$ 7,866.84 Million by 2033 | Major Companies - IBM corporation, SAP SA, Ripe Technology, Inc, Amazon Web Services. Blockchain in Agriculture Market 2026. DataM Intelligence has unveiled its latest report on the \"Blockchain in Agriculture Market Size 2026\" delivering powerful insights into key trends, future growth opportunities, and evolving market challenges. By blending robust qualitative analysis with data-driven quantitative research, DataM Intelligence offers a well-rounded perspective that helps organizations decode complex market dynamics, unlock new avenues for growth, and seize emerging opportunities in an ever-evolving global market. Unlock Strategic Partnerships in the Growing Blockchain in Agriculture Market-Connect with Key Industry Leaders Today: https://www.datamintelligence.com/partner-identification-enquiry/blockchain-in-agriculture-market? The Global Blockchain in Agriculture Market size reached US$ 497.41 million in 2025 and is expected to reach US$ 7,866.84 million by 2033, growing with a CAGR of 41.20% during the forecast period 2026-2033. The Blockchain in Agriculture Market refers to the adoption of blockchain technology across agricultural value chains to improve transparency, traceability, security, and efficiency.",
+                "score": 0.89912134
+              },
+              {
+                "title": "Latin America Blockchain In Agriculture Market Opportunities, Outlook and Forecast for Tech Companies 2034 - openPR.com",
+                "url": "https://www.openpr.com/news/4516788/latin-america-blockchain-in-agriculture-market-opportunities",
+                "source": "openpr.com",
+                "summary": "# Latin America Blockchain In Agriculture Market Opportunities, Outlook and Forecast for Tech Companies 2034. Latin America Blockchain in Agriculture Market Overview:. • The Latin America Blockchain in Agriculture Market size was‌ estimated at USD 723.5 Million in 2025. • The market is expected to reach‌ USD 20‚687.6 Million by 2034. • Growth driven by demand for agricultural traceability‚ adoption of smart farming technologies‚ and an increased focus on supply chain transparency. The following article provides the report titled \"Latin America Blockchain in Agriculture Market\" released by IMARC Group‚ one of the world's leading market research firms‚ examining the market size‚ share‚ demand‚ growth‚ trends‚ and forecast of the Latin America Blockchain in Agriculture market. According to the latest report by IMARC Group‚ the Latin America Blockchain in Agriculture Market size reached USD‌ 723.5 Million in 2025. The market is projected to grow at a CAGR of 44.24% during the period 2026-2034 with a projected market size of USD 20‚687.6‌ Million by 2034.",
+                "score": 0.7634837
+              },
+              {
+                "title": "Blockchain Reputation Is Evolving Beyond Transactions, Trust Now Follows Activity Patterns - Qoo Media",
+                "url": "https://www.qoo10.co.id/en/tech/100628/blockchain-reputation-is-evolving-beyond-transactions-trust-now-follows-activity-patterns/?amp=1",
+                "source": "qoo10.co.id",
+                "summary": "# Blockchain Reputation Is Evolving Beyond Transactions, Trust Now Follows Activity Patterns. blockchain digital reputation trust network / Img: nature.com. In Web3, credibility is no longer judged only by what an account claims to be. It is increasingly shaped by what can be observed on-chain, where public activity records give communities a clearer way to read trust and behavior. That shift is changing how digital reputation works across blockchain ecosystems. A profile name or digital identity still matters, but consistent activity, verifiable participation, and interaction patterns are now becoming equally important signals. In this environment, certain activities can be seen and verified publicly, which gives digital identity a more legible character for the community. A user’s consistency, the way they engage in a network, and the history of their interactions now help shape how credible that account appears to others. This is part of a broader change in how blockchain data is understood.",
+                "score": 0.6943027
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_multiturn_correction_person",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: bỏ qua Bill Gates, sửa sang Sundar Pichai → handle sundarpichai, carry limit=7 từ lượt 3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tweet mới nhất của Bill Gates là gì?"
+        },
+        {
+          "role": "user",
+          "content": "Nhầm rồi, mình muốn xem của Sundar Pichai"
+        },
+        {
+          "role": "user",
+          "content": "Lấy 7 tweet nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sundarpichai",
+              "limit": 7
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sundarpichai",
+              "limit": 7
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "sundarpichai",
+            "limit": 7
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "sundarpichai",
+            "items": [
+              {
+                "title": "RT @joshwoodward: We’ve heard your feedback about hitting limits too quickly on @GeminiApp. We're rolling out several fi",
+                "summary": "RT @joshwoodward: We’ve heard your feedback about hitting limits too quickly on @GeminiApp. We're rolling out several fixes to make your qu…",
+                "url": "https://x.com/sundarpichai/status/2060271132482457804",
+                "source": "@sundarpichai",
+                "date": "Fri May 29 08:04:50 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 127,
+                  "views": "125"
+                }
+              },
+              {
+                "title": "RT @ThomasOrTK: Today we’re introducing  Google AI Threat Defense - a comprehensive AI-powered cybersecurity solution de",
+                "summary": "RT @ThomasOrTK: Today we’re introducing  Google AI Threat Defense - a comprehensive AI-powered cybersecurity solution designed to help cont…",
+                "url": "https://x.com/sundarpichai/status/2059738137233105390",
+                "source": "@sundarpichai",
+                "date": "Wed May 27 20:46:54 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 265,
+                  "views": "190"
+                }
+              },
+              {
+                "title": "🤔🤔",
+                "summary": "🤔🤔",
+                "url": "https://x.com/sundarpichai/status/2059694636143407168",
+                "source": "@sundarpichai",
+                "date": "Wed May 27 17:54:03 +0000 2026",
+                "metrics": {
+                  "favorites": 46564,
+                  "retweets": 2301,
+                  "views": "2161694"
+                }
+              },
+              {
+                "title": "RT @joshwoodward: A top feature request is rolling out in @NotebookLM: Google Drive files will now automatically sync! 🔄",
+                "summary": "RT @joshwoodward: A top feature request is rolling out in @NotebookLM: Google Drive files will now automatically sync! 🔄\n\nWe're actively ro…",
+                "url": "https://x.com/sundarpichai/status/2059674914165297432",
+                "source": "@sundarpichai",
+                "date": "Wed May 27 16:35:41 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 118,
+                  "views": "147"
+                }
+              },
+              {
+                "title": "Excited to see what you are building with Antigravity, We just 3xed the Antigravity limits again, but this time, the wee",
+                "summary": "Excited to see what you are building with Antigravity, We just 3xed the Antigravity limits again, but this time, the weekly quotas. Don't stop building!",
+                "url": "https://x.com/sundarpichai/status/2057658091831996593",
+                "source": "@sundarpichai",
+                "date": "Fri May 22 03:01:33 +0000 2026",
+                "metrics": {
+                  "favorites": 2778,
+                  "retweets": 151,
+                  "views": "427434"
+                }
+              },
+              {
+                "title": "Really enjoyed this conversation with @MatthewBerman at I/O 👇",
+                "summary": "Really enjoyed this conversation with @MatthewBerman at I/O 👇",
+                "url": "https://x.com/sundarpichai/status/2057529838026854640",
+                "source": "@sundarpichai",
+                "date": "Thu May 21 18:31:55 +0000 2026",
+                "metrics": {
+                  "favorites": 1106,
+                  "retweets": 103,
+                  "views": "162716"
+                }
+              },
+              {
+                "title": "RT @mweinbach: I think Google did an incredible job with the new Gemini app",
+                "summary": "RT @mweinbach: I think Google did an incredible job with the new Gemini app\n\nThey use and adaptive native design systems from both Android…",
+                "url": "https://x.com/sundarpichai/status/2056896979767357828",
+                "source": "@sundarpichai",
+                "date": "Wed May 20 00:37:09 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 52,
+                  "views": "193"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_multiturn_carryover_search_type",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_carryover",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry search_type=Top từ lượt 1, chỉ đổi query=Claude AI theo lượt 2+3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tweet phổ biến nhất về ChatGPT"
+        },
+        {
+          "role": "user",
+          "content": "Đổi chủ đề sang Claude AI đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn lấy tweet phổ biến nhất thôi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Claude AI",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Claude AI",
+              "search_type": "Top"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "Claude AI",
+            "search_type": "Top"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "Claude AI",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "SOMEONE JUST BUILT AN APP RUNNING ON CLAUDE 4.8 AT $0.0002 CPM.",
+                "summary": "SOMEONE JUST BUILT AN APP RUNNING ON CLAUDE 4.8 AT $0.0002 CPM.\n\nNot a typo.\n\nZero point zero zero zero two dollars per thousand impressions.\n\nClaude 4.8 plus Apify plus Postiz.\n\nThe stack that makes AI-powered apps essentially free to run at scale.\n\nHere is exactly how they did it.",
+                "url": "https://x.com/cyrilXBT/status/2061499837065932944",
+                "source": "@cyrilXBT",
+                "date": "Mon Jun 01 17:27:16 +0000 2026",
+                "metrics": {
+                  "favorites": 87,
+                  "retweets": 16,
+                  "views": "13426"
+                }
+              },
+              {
+                "title": "🚨the difference between a $95K developer and a $300K AI architect is knowing this list exists",
+                "summary": "🚨the difference between a $95K developer and a $300K AI architect is knowing this list exists\n\nwhile most people type one-off prompts, a small group stacks specialized Claude skills and runs automated workflow factories 24/7\n\n32 skills across 10 repositories. audited, ranked, and grouped into three stacks:\n\n> builder stack: doc-coauthoring, app-docs, research-skill, skill-creator\n> operator stack: connect-apps, file-organizer, deep-research, Apollo automation\n> knowledge stack: Skill_Seekers, content-research-writer, wondelai 42-skill pack\n\nmost developers have never heard of any of these\n\nthe salary gap is real. the skill gap is fixable in an afternoon.\n\nfull list with direct GitHub links in the article",
+                "url": "https://x.com/0x_fokki/status/2061031062747169260",
+                "source": "@0x_fokki",
+                "date": "Sun May 31 10:24:32 +0000 2026",
+                "metrics": {
+                  "favorites": 592,
+                  "retweets": 30,
+                  "views": "11562"
+                }
+              },
+              {
+                "title": "One operator turned Claude Code + VS Code into AI automation business",
+                "summary": "One operator turned Claude Code + VS Code into AI automation business\n\nBuild -> Sell -> Scale AI Operating Systems for businesses\n\nReal numbers from the article:\n\n> First client: $1,650 in one day\n> Standard package: $5,000 upfront\n> Monthly retainers: $2,500–$5,000\n> Enterprise: up to $15k/month\n\nAll built in VS Code + Claude Code with almost zero overhead\n\nThe article gives you the full architecture (4 C's + 7 Buckets), folder structure, master prompt (CLAUDE.md), connection guides, autonomous routines via GitHub Actions, and the exact selling sequence\n\nCopy. Adapt. Sell",
+                "url": "https://x.com/monokern/status/2061448085268529162",
+                "source": "@monokern",
+                "date": "Mon Jun 01 14:01:38 +0000 2026",
+                "metrics": {
+                  "favorites": 94,
+                  "retweets": 21,
+                  "views": "4716"
+                }
+              },
+              {
+                "title": "MARCUS CHEN STACKED 30 MAC MINIS INTO AN AI SERVER FARM. ONE $599 MAC MINI REPLACES YOUR $200/MONTH CLAUDE CODE BILL WIT",
+                "summary": "MARCUS CHEN STACKED 30 MAC MINIS INTO AN AI SERVER FARM. ONE $599 MAC MINI REPLACES YOUR $200/MONTH CLAUDE CODE BILL WITH $3 IN ELECTRICITY\n\ntwo months ago a developer posted his claude code bill on reddit. $170 in 10 days. someone replied \"i bought a mac mini m4. haven't paid anthropic since.\" apple stores ran out of mac minis the same week\n\nthe m4 chip has 120 gb/s memory bandwidth and unified memory architecture. cpu and gpu share one pool so the model loads once and both read from it. a $599 mac mini runs ai faster than a $1,500 windows pc with a discrete gpu\n\nsince january 2026 ollama supports the anthropic messages api format. claude code connects directly to your local mac mini with one environment variable. same interface, zero api costs, $0 per request\n\na heavy developer pays $459 a month across claude code max, chatgpt pro, gemini, cursor and copilot. that's $5,508 a year. the mac mini pays off in 3 months and runs on $3 in electricity after that\n\nuber rolled out claude code to 5,000 engineers and burned through their $3.4 billion 2026 ai budget in 4 months. the people who own the hardware in 2026 are going to look very far ahead in 2028\n\nbookmark this and read the article below",
+                "url": "https://x.com/starmexxx/status/2061678629273076040",
+                "source": "@starmexxx",
+                "date": "Tue Jun 02 05:17:44 +0000 2026",
+                "metrics": {
+                  "favorites": 35,
+                  "retweets": 3,
+                  "views": "3971"
+                }
+              },
+              {
+                "title": "A 15-year-old guy created an AI girlfriend as a joke but quickly realized he could make money on it, and as a result, in",
+                "summary": "A 15-year-old guy created an AI girlfriend as a joke but quickly realized he could make money on it, and as a result, in 30 days his profit amounted to $18,364\n\nClaude created the girl, and she turned out to be so realistic that the guy started an OnlyFans account for her\n\nFor advertising, he started TikTok and Instagram accounts for her\n\nMen liked the girl so much that they started buying subscriptions en masse\n\nWeek 1 + $2,235\nWeek 2 + $7,750\nWeek 3 + $14,672\n1 month + $18,364\n\nThe guide on creating the AI girl has already been leaked into the public domain: it can be found in the article",
+                "url": "https://x.com/Bober_smart/status/2060693256724222425",
+                "source": "@Bober_smart",
+                "date": "Sat May 30 12:02:12 +0000 2026",
+                "metrics": {
+                  "favorites": 270,
+                  "retweets": 35,
+                  "views": "40783"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_multiturn_clarify_url_then_fetch",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_clarify_url",
+        "difficulty": "medium",
+        "what_it_tests": "3 turns: lượt 1 thiếu URL → lượt 2 cung cấp URL → lượt 3 xác nhận → read_url đúng link."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài báo mình vừa gửi"
+        },
+        {
+          "role": "user",
+          "content": "https://techcrunch.com/2025/01/ai-agents"
+        },
+        {
+          "role": "user",
+          "content": "Đọc đúng link đó, đừng tìm thêm gì khác"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://techcrunch.com/2025/01/ai-agents"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://techcrunch.com/2025/01/ai-agents"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://techcrunch.com/2025/01/ai-agents"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://techcrunch.com/2025/01/ai-agents",
+            "items": [
+              {
+                "title": "Page not found | TechCrunch",
+                "url": "https://techcrunch.com/2025/01/ai-agents",
+                "source": "techcrunch.com",
+                "summary": "Checking your Browser…\n\nVerifying...\n\nStuck? [Troubleshoot](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/kzww5/0x4AAAAAAB5UiAgmkGtdUBSR/auto/fbE/new/normal?lang=auto#refresh)\n\nSuccess!\n\nVerification failed\n\n[Troubleshoot](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/kzww5/0x4AAAAAAB5UiAgmkGtdUBSR/auto/fbE/new/normal?lang=auto#refresh)\n\nVerification expired\n\n[Refresh](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/kzww5/0x4AAAAAAB5UiAgmkGtdUBSR/auto/fbE/new/normal?lang=auto#refresh)\n\nVerification expired\n\n[Refresh](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/kzww5/0x4AAAAAAB5UiAgmkGtdUBSR/auto/fbE/new/normal?lang=auto#refresh)\n\n[Troubleshoot](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/ov2/av0/rch/kzww5/0x4AAAAAAB5UiAgmkGtdUBSR/auto/fbE/new/normal?lang=auto#refresh)\n\n[Privacy](https://www.cloudflare.com/privacypolicy/) • [Help](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/help)\n\n [Skip to content](https://techcrunch.com/2025/01/ai-agents#wp--skip-link--target)\n\nThe first StrictlyVC of 2026 hits SF on April 30. Tickets are going fast. [Register now.](https://techcrunch.com/events/strictlyvc-san-francisco-2026/?utm_source=tc&utm_medium=ad&utm_campaign=svcsf2026&utm_content=ticketsales&promo=topbanner&display=)\n\nClose\n\n# 404\n\n## Page not found\n\nWe’re sorry, we seem to have lost this page\n\n\nSearch\n\n[Back to homepage](https://www.techcrunch.com/)\n\n## Latest News\n\n- ![](https://techcrunch.com/wp-content/uploads/2026/04/54889021188_e8f5317c37_o.jpg?w=563)\n\n\n\n[Startups](https://techcrunch.com/category/startups/)\n\n\n\n### [How to make the Startup Battlefield Top 20 — and what every company gets regardless](https://techcrunch.com/2026/06/01/how-to-make-the-startup-battlefield-top-20-and-what-every-company-gets-regardless/)\n\n\n\n\n\n  - [Isabelle Johannessen](https://techcrunch.com/author/isabelle-johannessen/)\n\n9 hours ago\n\n- ![Sundar Pichai, chief executive officer of Alphabet](https://techcrunch.com/wp-content/uploads/2025/02/GettyImages-2173545265.jpg?w=562)\n\n\n\nIn Brief\n\n\n\n### [Alphabet plans to raise $80B to pay for AI buildout](https://techcrunch.com/2026/06/01/alphabet-plans-to-raise-80-billion-to-pay-for-ai-buildout/)\n\n\n\n\n\n  - [Lucas Ropek](https://techcrunch.com/author/lucas-ropek/)\n\n9 hours ago\n\n- ![Ethan Thornton at StrictlyVC San Francisco](https://techcrunch.com/wp-content/uploads/2025/08/Ethan-Thornton-SVCSF-2025-e1780338289712.jpg?w=470)\n\n\n\n[Startups](https://techcrunch.com/category/startups/)\n\n\n\n### [Defense tech darling Mach Industries hits $1.8B valuation, a 4x jump in a year](https://techcrunch.com/2026/06/01/defense-tech-darling-mach-industries-hits-1-8b-valuation-a-4x-jump-in-a-year/)\n\n\n\n\n\n  - [Julie Bort](https://techcrunch.com/author/julie-bort/)\n\n11 hours ago\n\n- ![NVIDIA CEO Jensen Huang](https://techcrunch.com/wp-content/uploads/2025/03/GettyImages-2205761886.jpg?w=543)\n\n\n\n[AI](https://techcrunch.com/category/artificial-intelligence/)\n\n\n\n### [Nvidia chases $200B CPU market with AI agent PCs from Microsoft, Dell, and HP](https://techcrunch.com/2026/06/01/nvidia-chases-200b-cpu-market-with-ai-agent-pcs-from-microsoft-dell-and-hp/)\n\n\n\n\n\n  - [Julie Bort](https://techcrunch.com/author/julie-bort/)\n\n11 hours ago\n\n- ![Kevin A. Damoa, Founder & CEO, Glīd, Claire Kroft and Ankit Malhotra, winners of the Startup Battlefield 2025, pose onstage during day three of TechCrunch Disrupt 2025 at Moscone Center on October 29, 2025 in San Francisco, California.](https://techcrunch.com/wp-content/uploads/2025/11/54889460445_20c033b45a_o-2.jpg?w=563)\n\n\n\n[Startups](https://techcrunch.com/category/startups/)\n\n\n\n### [From the stage to the future: Where are Startup Battlefield’s alumni now?](https://techcrunch.com/2026/06/01/from-the-stage-to-the-future-where-are-startup-battlefields-alumni-now/)\n\n\n\n\n\n  - [Isabelle Johanness"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_multiturn_switch_to_twitter",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_switch_tool",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: chuyển từ web_search sang search_tweets, giữ chủ đề Meta AI, carry search_type=Top từ lượt 3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin tức mới nhất về Meta AI hôm nay"
+        },
+        {
+          "role": "user",
+          "content": "Thôi bỏ web, chuyển qua tìm tweet về Meta AI đi"
+        },
+        {
+          "role": "user",
+          "content": "Lấy tweet top nhất nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Meta AI",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Meta AI",
+              "search_type": "Top"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "Meta AI",
+            "search_type": "Top"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "Meta AI",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "INSTAGRAM GOT ROBBED BY ITS OWN AI",
+                "summary": "INSTAGRAM GOT ROBBED BY ITS OWN AI\n\nMeta gave its Instagram support bot the power to reset your password. No ID check. You just ask it nicely.\n\nPeople figured it out, took over accounts in real time, and sold them on Telegram before Meta noticed.\n\n- Nothing was hacked - attackers just talked the bot into forwarding the reset code\n- Knowing your username was enough to start the takeover\n- Premium handles like \"hey\" and \"jowo\", worth $1M+ combined, got flipped in hours\n- Meta shipped this bot in March bragging it could detect account takeovers\n\nA $1.6T company built a bot that hands over your account if you say please.",
+                "url": "https://x.com/k1rallik/status/2061408712556695784",
+                "source": "@k1rallik",
+                "date": "Mon Jun 01 11:25:10 +0000 2026",
+                "metrics": {
+                  "favorites": 176,
+                  "retweets": 23,
+                  "views": "31823"
+                }
+              },
+              {
+                "title": "A 19-euro tool just replaced 8,000 Meta employees.",
+                "summary": "A 19-euro tool just replaced 8,000 Meta employees.\n\nHere’s the exact workflow a TikTok creator used to build AI influencer videos from scratch — no camera, no team, no budget.\n\nStep 1. Open Pinterest. Search “Girl Self.” Save the image you like. Open Nanobanana Pro.\n\nStep 2. Swap the face using a single prompt. (Link at the bottom.)\n\nStep 3. Take your generated photo into Crust. Currently the easiest video-from-image tool on the market.\n\nStep 4. Create 3 nodes: reference image, text, video generator.\n\nStep 5. Drop your photo into the image node. Write a video prompt into the text field. This is what makes the photo move.\n\nStep 6. Connect the nodes. Text to text-in. Image to image-in. Select Kling 2.6. Set duration. Toggle sound.\n\nStep 7. Hit generate.\n\n2 prompts. 1 AI girl. 0 employees.\n\nMeta spent $14B on Reality Labs last year to build digital humans. This creator built one in 7 minutes for less than a dinner.\n\nThe prompts are free in the reply.",
+                "url": "https://x.com/rgk_degen/status/2061095209476182099",
+                "source": "@rgk_degen",
+                "date": "Sun May 31 14:39:25 +0000 2026",
+                "metrics": {
+                  "favorites": 1579,
+                  "retweets": 230,
+                  "views": "159262"
+                }
+              },
+              {
+                "title": "Larry Ellison just said the next phase of AI runs on proprietary data",
+                "summary": "Larry Ellison just said the next phase of AI runs on proprietary data\n\nThese 5 companies own it:\n\n$PLTR: Inside classified government and defense data no AI can train on\n\n$META: 3.5B people generating data every day that no competitor can replicate\n\n$GOOGL: 8.5B daily searches. 2.7B YouTube users. The data moat is untouchable\n\n$RDDT: 20 years of raw human conversation. OpenAI is already paying for it\n\n$TEM: 45M patient records. The oil field of healthcare AI\n\nThe next AI winners aren’t the model builders\n\nThey’re the ones who own the data\n\nAre you in any of them?",
+                "url": "https://x.com/fammetaX/status/2060877589888024689",
+                "source": "@fammetaX",
+                "date": "Sun May 31 00:14:41 +0000 2026",
+                "metrics": {
+                  "favorites": 22,
+                  "retweets": 3,
+                  "views": "4190"
+                }
+              },
+              {
+                "title": "🚨 ÚLTIMA HORA: Están utilizando el asistente de soporte de IA de Meta para obtener acceso a las cuentas de Instagram de ",
+                "summary": "🚨 ÚLTIMA HORA: Están utilizando el asistente de soporte de IA de Meta para obtener acceso a las cuentas de Instagram de otras personas.\n\nEsto es lo que pasa cuando intentas delegar a la IA hasta la capacidad de recuperación de cuentas.\n\nLa IA se salta la autenticación, y accede a cualquier cuenta 👇👇🤯 https://t.co/XRIeq4mhJl",
+                "url": "https://x.com/franpradasAI/status/2061476377753219246",
+                "source": "@franpradasAI",
+                "date": "Mon Jun 01 15:54:03 +0000 2026",
+                "metrics": {
+                  "favorites": 1348,
+                  "retweets": 85,
+                  "views": "126566"
+                }
+              },
+              {
+                "title": "‼️ Instagram’s AI just gave away people’s accounts to anyone who asked nicely.",
+                "summary": "‼️ Instagram’s AI just gave away people’s accounts to anyone who asked nicely.\n\nusers found out you could talk to Meta’s AI support assistant, ask it to reset someone’s password, and would just do it. no questions asked. all you needed was a username and a vpn lmao. \n\n- the AI was able to change the email on any account and hand it to a random stranger in less than 3 minutes. \n\npremium handles like @ hey and @ jowo got stolen and flipped on telegram for over a million combined. 2FA accounts were safe but everyone else was exposed for months. \n\nnobody hacked a server here. the weapon was a simple conversation. \n\nand this dropped 11 days after they laid off 8,000 people including their security team btw. \n\nthis is literally the dumbest security disaster of 2026.",
+                "url": "https://x.com/birdabo/status/2061485443150180519",
+                "source": "@birdabo",
+                "date": "Mon Jun 01 16:30:04 +0000 2026",
+                "metrics": {
+                  "favorites": 31,
+                  "retweets": 4,
+                  "views": "1951"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
