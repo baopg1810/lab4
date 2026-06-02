@@ -264,5 +264,4 @@ Do not submit `.env` or API keys.
 - 2:45-3:20 chat live + transcript.
 - 3:20-3:50 report.
 - 3:50-4:00 package and final sanity check.
-#   l a b 4  
- 
+#
