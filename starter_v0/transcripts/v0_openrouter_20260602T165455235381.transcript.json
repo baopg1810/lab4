@@ -1,0 +1,742 @@
+{
+  "transcript_id": "v0_openrouter_20260602T165455235381",
+  "artifact_version": "v0+pe676ef905966+t9853ee135a7c",
+  "prompt_hash": "e676ef9059663af74d56817f9a72c05924b7cddf3d83ab2e4c6b230dbdeea341",
+  "tools_hash": "9853ee135a7c6f858a5b51a5959a376b114e780fa878f9ce1b19356346873a81",
+  "version": "v0",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "F:\\AI thuc chien\\git\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "F:\\AI thuc chien\\git\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T16:54:55",
+  "updated_at": "2026-06-02T16:59:06",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T16:55:47",
+      "user": "Cho tôi xem repo có số sao nhiều nhất trên github",
+      "status": "answered",
+      "assistant_text": "Here are the top repositories on GitHub with the most stars:\n\n1. **[build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)**  \n   Master programming by recreating your favorite technologies from scratch.  \n   Stars: 510,791 | Forks: 48,428 | Updated: 2026-06-02\n\n2. **[awesome](https://github.com/sindresorhus/awesome)**  \n   😎 Awesome lists about all kinds of interesting topics.  \n   Stars: 472,207 | Forks: 35,277 | Updated: 2026-06-02\n\n3. **[freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp)**  \n   freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.  \n   Stars: 445,806 | Forks: 44,782 | Updated: 2026-06-02\n\n4. **[public-apis](https://github.com/public-apis/public-apis)**  \n   A collective list of free APIs.  \n   Stars: 438,607 | Forks: 48,066 | Updated: 2026-06-02\n\n5. **[free-programming-books](https://github.com/EbookFoundation/free-programming-books)**  \n   :books: Freely available programming books.  \n   Stars: 389,384 | Forks: 66,385 | Updated: 2026-06-02\n\nIf you need more information or specific details about any of these repositories, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "github_search",
+              "args": {
+                "query": "",
+                "sort_by": "stars",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "github_search",
+              "args": {
+                "query": "",
+                "sort_by": "stars",
+                "limit": 5
+              },
+              "result": {
+                "tool": "github_search",
+                "query": "",
+                "sort_by": "stars",
+                "items": [
+                  {
+                    "title": "codecrafters-io/build-your-own-x",
+                    "url": "https://github.com/codecrafters-io/build-your-own-x",
+                    "source": "GitHub",
+                    "summary": "Master programming by recreating your favorite technologies from scratch. (Stars: 510791, Forks: 48428, Updated: 2026-06-02T09:52:20Z)"
+                  },
+                  {
+                    "title": "sindresorhus/awesome",
+                    "url": "https://github.com/sindresorhus/awesome",
+                    "source": "GitHub",
+                    "summary": "😎 Awesome lists about all kinds of interesting topics (Stars: 472207, Forks: 35277, Updated: 2026-06-02T09:51:23Z)"
+                  },
+                  {
+                    "title": "freeCodeCamp/freeCodeCamp",
+                    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+                    "source": "GitHub",
+                    "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free. (Stars: 445806, Forks: 44782, Updated: 2026-06-02T09:52:38Z)"
+                  },
+                  {
+                    "title": "public-apis/public-apis",
+                    "url": "https://github.com/public-apis/public-apis",
+                    "source": "GitHub",
+                    "summary": "A collective list of free APIs (Stars: 438607, Forks: 48066, Updated: 2026-06-02T09:35:47Z)"
+                  },
+                  {
+                    "title": "EbookFoundation/free-programming-books",
+                    "url": "https://github.com/EbookFoundation/free-programming-books",
+                    "source": "GitHub",
+                    "summary": ":books: Freely available programming books (Stars: 389384, Forks: 66385, Updated: 2026-06-02T09:46:59Z)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are the top repositories on GitHub with the most stars:\n\n1. **[build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)**  \n   Master programming by recreating your favorite technologies from scratch.  \n   Stars: 510,791 | Forks: 48,428 | Updated: 2026-06-02\n\n2. **[awesome](https://github.com/sindresorhus/awesome)**  \n   😎 Awesome lists about all kinds of interesting topics.  \n   Stars: 472,207 | Forks: 35,277 | Updated: 2026-06-02\n\n3. **[freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp)**  \n   freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.  \n   Stars: 445,806 | Forks: 44,782 | Updated: 2026-06-02\n\n4. **[public-apis](https://github.com/public-apis/public-apis)**  \n   A collective list of free APIs.  \n   Stars: 438,607 | Forks: 48,066 | Updated: 2026-06-02\n\n5. **[free-programming-books](https://github.com/EbookFoundation/free-programming-books)**  \n   :books: Freely available programming books.  \n   Stars: 389,384 | Forks: 66,385 | Updated: 2026-06-02\n\nIf you need more information or specific details about any of these repositories, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "github_search",
+          "args": {
+            "query": "",
+            "sort_by": "stars",
+            "limit": 5
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "",
+            "sort_by": "stars",
+            "items": [
+              {
+                "title": "codecrafters-io/build-your-own-x",
+                "url": "https://github.com/codecrafters-io/build-your-own-x",
+                "source": "GitHub",
+                "summary": "Master programming by recreating your favorite technologies from scratch. (Stars: 510791, Forks: 48428, Updated: 2026-06-02T09:52:20Z)"
+              },
+              {
+                "title": "sindresorhus/awesome",
+                "url": "https://github.com/sindresorhus/awesome",
+                "source": "GitHub",
+                "summary": "😎 Awesome lists about all kinds of interesting topics (Stars: 472207, Forks: 35277, Updated: 2026-06-02T09:51:23Z)"
+              },
+              {
+                "title": "freeCodeCamp/freeCodeCamp",
+                "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+                "source": "GitHub",
+                "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free. (Stars: 445806, Forks: 44782, Updated: 2026-06-02T09:52:38Z)"
+              },
+              {
+                "title": "public-apis/public-apis",
+                "url": "https://github.com/public-apis/public-apis",
+                "source": "GitHub",
+                "summary": "A collective list of free APIs (Stars: 438607, Forks: 48066, Updated: 2026-06-02T09:35:47Z)"
+              },
+              {
+                "title": "EbookFoundation/free-programming-books",
+                "url": "https://github.com/EbookFoundation/free-programming-books",
+                "source": "GitHub",
+                "summary": ":books: Freely available programming books (Stars: 389384, Forks: 66385, Updated: 2026-06-02T09:46:59Z)"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:55:47"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-06-02T16:56:52",
+      "user": "Cho tôi xem API nha",
+      "status": "answered",
+      "assistant_text": "Here are some popular GitHub repositories related to APIs:\n\n1. **[public-apis/public-apis](https://github.com/public-apis/public-apis)**  \n   A collective list of free APIs.  \n   Stars: 438,607 | Forks: 48,066 | Updated: 2026-06-02\n\n2. **[open-webui/open-webui](https://github.com/open-webui/open-webui)**  \n   User-friendly AI Interface (Supports Ollama, OpenAI API, ...).  \n   Stars: 139,645 | Forks: 20,033 | Updated: 2026-06-02\n\n3. **[firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)**  \n   The API to search, scrape, and interact with the web at scale. 🔥  \n   Stars: 127,473 | Forks: 7,604 | Updated: 2026-06-02\n\n4. **[Comfy-Org/ComfyUI](https://github.com/Comfy-Org/ComfyUI)**  \n   The most powerful and modular diffusion model GUI, API, and backend with a graph/nodes interface.  \n   Stars: 115,369 | Forks: 13,495 | Updated: 2026-06-02\n\n5. **[neovim/neovim](https://github.com/neovim/neovim)**  \n   Vim-fork focused on extensibility and usability.  \n   Stars: 100,086 | Forks: 6,913 | Updated: 2026-06-02\n\nIf you need more information or specific details about any of these repositories, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "github_search",
+              "args": {
+                "query": "API",
+                "sort_by": "stars",
+                "limit": 5
+              }
+            },
+            {
+              "name": "github_search",
+              "args": {
+                "query": "",
+                "sort_by": "stars",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "github_search",
+              "args": {
+                "query": "API",
+                "sort_by": "stars",
+                "limit": 5
+              },
+              "result": {
+                "tool": "github_search",
+                "query": "API",
+                "sort_by": "stars",
+                "items": [
+                  {
+                    "title": "public-apis/public-apis",
+                    "url": "https://github.com/public-apis/public-apis",
+                    "source": "GitHub",
+                    "summary": "A collective list of free APIs (Stars: 438607, Forks: 48066, Updated: 2026-06-02T09:35:47Z)"
+                  },
+                  {
+                    "title": "open-webui/open-webui",
+                    "url": "https://github.com/open-webui/open-webui",
+                    "source": "GitHub",
+                    "summary": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...) (Stars: 139645, Forks: 20033, Updated: 2026-06-02T09:53:45Z)"
+                  },
+                  {
+                    "title": "firecrawl/firecrawl",
+                    "url": "https://github.com/firecrawl/firecrawl",
+                    "source": "GitHub",
+                    "summary": "The API to search, scrape, and interact with the web at scale. 🔥 (Stars: 127473, Forks: 7604, Updated: 2026-06-02T09:54:39Z)"
+                  },
+                  {
+                    "title": "Comfy-Org/ComfyUI",
+                    "url": "https://github.com/Comfy-Org/ComfyUI",
+                    "source": "GitHub",
+                    "summary": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. (Stars: 115369, Forks: 13495, Updated: 2026-06-02T09:50:17Z)"
+                  },
+                  {
+                    "title": "neovim/neovim",
+                    "url": "https://github.com/neovim/neovim",
+                    "source": "GitHub",
+                    "summary": "Vim-fork focused on extensibility and usability (Stars: 100086, Forks: 6913, Updated: 2026-06-02T09:44:56Z)"
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "github_search",
+              "args": {
+                "query": "",
+                "sort_by": "stars",
+                "limit": 5
+              },
+              "result": {
+                "tool": "github_search",
+                "query": "",
+                "sort_by": "stars",
+                "items": [
+                  {
+                    "title": "codecrafters-io/build-your-own-x",
+                    "url": "https://github.com/codecrafters-io/build-your-own-x",
+                    "source": "GitHub",
+                    "summary": "Master programming by recreating your favorite technologies from scratch. (Stars: 510792, Forks: 48428, Updated: 2026-06-02T09:56:25Z)"
+                  },
+                  {
+                    "title": "sindresorhus/awesome",
+                    "url": "https://github.com/sindresorhus/awesome",
+                    "source": "GitHub",
+                    "summary": "😎 Awesome lists about all kinds of interesting topics (Stars: 472207, Forks: 35277, Updated: 2026-06-02T09:51:23Z)"
+                  },
+                  {
+                    "title": "freeCodeCamp/freeCodeCamp",
+                    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+                    "source": "GitHub",
+                    "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free. (Stars: 445806, Forks: 44782, Updated: 2026-06-02T09:52:38Z)"
+                  },
+                  {
+                    "title": "public-apis/public-apis",
+                    "url": "https://github.com/public-apis/public-apis",
+                    "source": "GitHub",
+                    "summary": "A collective list of free APIs (Stars: 438607, Forks: 48066, Updated: 2026-06-02T09:35:47Z)"
+                  },
+                  {
+                    "title": "EbookFoundation/free-programming-books",
+                    "url": "https://github.com/EbookFoundation/free-programming-books",
+                    "source": "GitHub",
+                    "summary": ":books: Freely available programming books (Stars: 389384, Forks: 66385, Updated: 2026-06-02T09:46:59Z)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some popular GitHub repositories related to APIs:\n\n1. **[public-apis/public-apis](https://github.com/public-apis/public-apis)**  \n   A collective list of free APIs.  \n   Stars: 438,607 | Forks: 48,066 | Updated: 2026-06-02\n\n2. **[open-webui/open-webui](https://github.com/open-webui/open-webui)**  \n   User-friendly AI Interface (Supports Ollama, OpenAI API, ...).  \n   Stars: 139,645 | Forks: 20,033 | Updated: 2026-06-02\n\n3. **[firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)**  \n   The API to search, scrape, and interact with the web at scale. 🔥  \n   Stars: 127,473 | Forks: 7,604 | Updated: 2026-06-02\n\n4. **[Comfy-Org/ComfyUI](https://github.com/Comfy-Org/ComfyUI)**  \n   The most powerful and modular diffusion model GUI, API, and backend with a graph/nodes interface.  \n   Stars: 115,369 | Forks: 13,495 | Updated: 2026-06-02\n\n5. **[neovim/neovim](https://github.com/neovim/neovim)**  \n   Vim-fork focused on extensibility and usability.  \n   Stars: 100,086 | Forks: 6,913 | Updated: 2026-06-02\n\nIf you need more information or specific details about any of these repositories, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "github_search",
+          "args": {
+            "query": "API",
+            "sort_by": "stars",
+            "limit": 5
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "API",
+            "sort_by": "stars",
+            "items": [
+              {
+                "title": "public-apis/public-apis",
+                "url": "https://github.com/public-apis/public-apis",
+                "source": "GitHub",
+                "summary": "A collective list of free APIs (Stars: 438607, Forks: 48066, Updated: 2026-06-02T09:35:47Z)"
+              },
+              {
+                "title": "open-webui/open-webui",
+                "url": "https://github.com/open-webui/open-webui",
+                "source": "GitHub",
+                "summary": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...) (Stars: 139645, Forks: 20033, Updated: 2026-06-02T09:53:45Z)"
+              },
+              {
+                "title": "firecrawl/firecrawl",
+                "url": "https://github.com/firecrawl/firecrawl",
+                "source": "GitHub",
+                "summary": "The API to search, scrape, and interact with the web at scale. 🔥 (Stars: 127473, Forks: 7604, Updated: 2026-06-02T09:54:39Z)"
+              },
+              {
+                "title": "Comfy-Org/ComfyUI",
+                "url": "https://github.com/Comfy-Org/ComfyUI",
+                "source": "GitHub",
+                "summary": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. (Stars: 115369, Forks: 13495, Updated: 2026-06-02T09:50:17Z)"
+              },
+              {
+                "title": "neovim/neovim",
+                "url": "https://github.com/neovim/neovim",
+                "source": "GitHub",
+                "summary": "Vim-fork focused on extensibility and usability (Stars: 100086, Forks: 6913, Updated: 2026-06-02T09:44:56Z)"
+              }
+            ]
+          }
+        },
+        {
+          "tool": "github_search",
+          "args": {
+            "query": "",
+            "sort_by": "stars",
+            "limit": 5
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "",
+            "sort_by": "stars",
+            "items": [
+              {
+                "title": "codecrafters-io/build-your-own-x",
+                "url": "https://github.com/codecrafters-io/build-your-own-x",
+                "source": "GitHub",
+                "summary": "Master programming by recreating your favorite technologies from scratch. (Stars: 510792, Forks: 48428, Updated: 2026-06-02T09:56:25Z)"
+              },
+              {
+                "title": "sindresorhus/awesome",
+                "url": "https://github.com/sindresorhus/awesome",
+                "source": "GitHub",
+                "summary": "😎 Awesome lists about all kinds of interesting topics (Stars: 472207, Forks: 35277, Updated: 2026-06-02T09:51:23Z)"
+              },
+              {
+                "title": "freeCodeCamp/freeCodeCamp",
+                "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+                "source": "GitHub",
+                "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free. (Stars: 445806, Forks: 44782, Updated: 2026-06-02T09:52:38Z)"
+              },
+              {
+                "title": "public-apis/public-apis",
+                "url": "https://github.com/public-apis/public-apis",
+                "source": "GitHub",
+                "summary": "A collective list of free APIs (Stars: 438607, Forks: 48066, Updated: 2026-06-02T09:35:47Z)"
+              },
+              {
+                "title": "EbookFoundation/free-programming-books",
+                "url": "https://github.com/EbookFoundation/free-programming-books",
+                "source": "GitHub",
+                "summary": ":books: Freely available programming books (Stars: 389384, Forks: 66385, Updated: 2026-06-02T09:46:59Z)"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:56:52"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-06-02T16:58:21",
+      "user": "Tìm tài liệu về \"Stabe Diffusion\" trên arxiv",
+      "status": "answered",
+      "assistant_text": "Here are some recent papers related to \"Stable Diffusion\" from arXiv:\n\n1. **[Stable Diffusion Segmentation for Biomedical Images with Single-step Reverse Process](http://arxiv.org/abs/2406.18361v3)**  \n   - **Authors**: Tianyu Lin, Zhiguang Chen, Zhonghao Yan, Weijiang Yu, Fudan Zheng  \n   - **Published**: 2024-06-26  \n   - **Summary**: This paper introduces SDSeg, a latent diffusion segmentation model that addresses challenges in medical image segmentation by utilizing a single-step reverse process. The model shows superior performance on benchmark datasets.  \n   - [PDF Link](https://arxiv.org/pdf/2406.18361v3)\n\n2. **[Stable-Sim2Real: Exploring Simulation of Real-Captured 3D Data with Two-Stage Depth Diffusion](http://arxiv.org/abs/2507.23483v1)**  \n   - **Authors**: Mutian Xu, Chongjie Ye, Haolin Liu, Yushuang Wu, Jiahao Chang, Xiaoguang Han  \n   - **Published**: 2025-07-31  \n   - **Summary**: This work presents a two-stage depth diffusion model for 3D data simulation, enhancing the realism of synthetic data for visual tasks.  \n   - [PDF Link](https://arxiv.org/pdf/2507.23483v1)\n\n3. **[Diffusion Policy Policy Optimization](http://arxiv.org/abs/2409.00588v3)**  \n   - **Authors**: Allen Z. Ren, Justin Lidard, Lars L. Ankile, Anthony Simeonov, Pulkit Agrawal, Anirudha Majumdar, Benjamin Burchfiel, Hongkai Dai, Max Simchowitz  \n   - **Published**: 2024-09-01  \n   - **Summary**: This paper introduces DPPO, an algorithmic framework for fine-tuning diffusion-based policies in reinforcement learning tasks, demonstrating strong performance and efficiency.  \n   - [PDF Link](https://arxiv.org/pdf/2409.00588v3)\n\n4. **[StableNormal: Reducing Diffusion Variance for Stable and Sharp Normal](http://arxiv.org/abs/2406.16864v1)**  \n   - **Authors**: Chongjie Ye, Lingteng Qiu, Xiaodong Gu, Qi Zuo, Yushuang Wu, Zilong Dong, Liefeng Bo, Yuliang Xiu, Xiaoguang Han  \n   - **Published**: 2024-06-24  \n   - **Summary**: This work presents StableNormal, which reduces inference variance in surface normal estimation from images, achieving high-quality results under challenging conditions.  \n   - [PDF Link](https://arxiv.org/pdf/2406.16864v1)\n\n5. **[Q-Diffusion: Quantizing Diffusion Models](http://arxiv.org/abs/2302.04304v3)**  \n   - **Authors**: Xiuyu Li, Yijiang Liu, Long Lian, Huanrui Yang, Zhen Dong, Daniel Kang, Shanghang Zhang, Kurt Keutzer  \n   - **Published**: 2023-02-08  \n   - **Summary**: This paper proposes a novel post-training quantization method for diffusion models, significantly reducing memory consumption while maintaining performance.  \n   - [PDF Link](https://arxiv.org/pdf/2302.04304v3)\n\nIf you need further details or specific information about any of these papers, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "Stable Diffusion",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "Stable Diffusion",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "Stable Diffusion",
+                "api_query": "all:Stable AND all:Diffusion",
+                "total_results": 5920,
+                "items": [
+                  {
+                    "arxiv_id": "2406.18361v3",
+                    "title": "Stable Diffusion Segmentation for Biomedical Images with Single-step Reverse Process",
+                    "summary": "Diffusion models have demonstrated their effectiveness across various generative tasks. However, when applied to medical image segmentation, these models encounter several challenges, including significant resource and time requirements. They also necessitate a multi-step reverse process and multiple samples to produce reliable predictions. To address these challenges, we introduce the first latent diffusion segmentation model, named SDSeg, built upon stable diffusion (SD). SDSeg incorporates a straightforward latent estimation strategy to facilitate a single-step reverse process and utilizes latent fusion concatenation to remove the necessity for multiple samples. Extensive experiments indicate that SDSeg surpasses existing state-of-the-art methods on five benchmark datasets featuring diverse imaging modalities. Remarkably, SDSeg is capable of generating stable predictions with a solitary reverse step and sample, epitomizing the model's stability as implied by its name. The code is available at https://github.com/lin-tianyu/Stable-Diffusion-Seg",
+                    "authors": [
+                      "Tianyu Lin",
+                      "Zhiguang Chen",
+                      "Zhonghao Yan",
+                      "Weijiang Yu",
+                      "Fudan Zheng"
+                    ],
+                    "published": "2024-06-26T14:01:07Z",
+                    "updated": "2024-07-09T17:25:27Z",
+                    "url": "http://arxiv.org/abs/2406.18361v3",
+                    "pdf_url": "https://arxiv.org/pdf/2406.18361v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CV",
+                    "categories": [
+                      "cs.CV",
+                      "cs.AI",
+                      "eess.IV"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2507.23483v1",
+                    "title": "Stable-Sim2Real: Exploring Simulation of Real-Captured 3D Data with Two-Stage Depth Diffusion",
+                    "summary": "3D data simulation aims to bridge the gap between simulated and real-captured 3D data, which is a fundamental problem for real-world 3D visual tasks. Most 3D data simulation methods inject predefined physical priors but struggle to capture the full complexity of real data. An optimal approach involves learning an implicit mapping from synthetic to realistic data in a data-driven manner, but progress in this solution has met stagnation in recent studies. This work explores a new solution path of data-driven 3D simulation, called Stable-Sim2Real, based on a novel two-stage depth diffusion model. The initial stage finetunes Stable-Diffusion to generate the residual between the real and synthetic paired depth, producing a stable but coarse depth, where some local regions may deviate from realistic patterns. To enhance this, both the synthetic and initial output depth are fed into a second-stage diffusion, where diffusion loss is adjusted to prioritize these distinct areas identified by a 3D discriminator. We provide a new benchmark scheme to evaluate 3D data simulation methods. Extensive experiments show that training the network with the 3D simulated data derived from our method significantly enhances performance in real-world 3D visual tasks. Moreover, the evaluation demonstrates the high similarity between our 3D simulated data and real-captured patterns. Project page: https://mutianxu.github.io/stable-sim2real/.",
+                    "authors": [
+                      "Mutian Xu",
+                      "Chongjie Ye",
+                      "Haolin Liu",
+                      "Yushuang Wu",
+                      "Jiahao Chang",
+                      "Xiaoguang Han"
+                    ],
+                    "published": "2025-07-31T12:08:16Z",
+                    "updated": "2025-07-31T12:08:16Z",
+                    "url": "http://arxiv.org/abs/2507.23483v1",
+                    "pdf_url": "https://arxiv.org/pdf/2507.23483v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CV",
+                    "categories": [
+                      "cs.CV"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2409.00588v3",
+                    "title": "Diffusion Policy Policy Optimization",
+                    "summary": "We introduce Diffusion Policy Policy Optimization, DPPO, an algorithmic framework including best practices for fine-tuning diffusion-based policies (e.g. Diffusion Policy) in continuous control and robot learning tasks using the policy gradient (PG) method from reinforcement learning (RL). PG methods are ubiquitous in training RL policies with other policy parameterizations; nevertheless, they had been conjectured to be less efficient for diffusion-based policies. Surprisingly, we show that DPPO achieves the strongest overall performance and efficiency for fine-tuning in common benchmarks compared to other RL methods for diffusion-based policies and also compared to PG fine-tuning of other policy parameterizations. Through experimental investigation, we find that DPPO takes advantage of unique synergies between RL fine-tuning and the diffusion parameterization, leading to structured and on-manifold exploration, stable training, and strong policy robustness. We further demonstrate the strengths of DPPO in a range of realistic settings, including simulated robotic tasks with pixel observations, and via zero-shot deployment of simulation-trained policies on robot hardware in a long-horizon, multi-stage manipulation task. Website with code: diffusion-ppo.github.io",
+                    "authors": [
+                      "Allen Z. Ren",
+                      "Justin Lidard",
+                      "Lars L. Ankile",
+                      "Anthony Simeonov",
+                      "Pulkit Agrawal",
+                      "Anirudha Majumdar",
+                      "Benjamin Burchfiel",
+                      "Hongkai Dai",
+                      "Max Simchowitz"
+                    ],
+                    "published": "2024-09-01T02:47:50Z",
+                    "updated": "2024-12-09T21:30:07Z",
+                    "url": "http://arxiv.org/abs/2409.00588v3",
+                    "pdf_url": "https://arxiv.org/pdf/2409.00588v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "cs.LG"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2406.16864v1",
+                    "title": "StableNormal: Reducing Diffusion Variance for Stable and Sharp Normal",
+                    "summary": "This work addresses the challenge of high-quality surface normal estimation from monocular colored inputs (i.e., images and videos), a field which has recently been revolutionized by repurposing diffusion priors. However, previous attempts still struggle with stochastic inference, conflicting with the deterministic nature of the Image2Normal task, and costly ensembling step, which slows down the estimation process. Our method, StableNormal, mitigates the stochasticity of the diffusion process by reducing inference variance, thus producing \"Stable-and-Sharp\" normal estimates without any additional ensembling process. StableNormal works robustly under challenging imaging conditions, such as extreme lighting, blurring, and low quality. It is also robust against transparent and reflective surfaces, as well as cluttered scenes with numerous objects. Specifically, StableNormal employs a coarse-to-fine strategy, which starts with a one-step normal estimator (YOSO) to derive an initial normal guess, that is relatively coarse but reliable, then followed by a semantic-guided refinement process (SG-DRN) that refines the normals to recover geometric details. The effectiveness of StableNormal is demonstrated through competitive performance in standard datasets such as DIODE-indoor, iBims, ScannetV2 and NYUv2, and also in various downstream tasks, such as surface reconstruction and normal enhancement. These results evidence that StableNormal retains both the \"stability\" and \"sharpness\" for accurate normal estimation. StableNormal represents a baby attempt to repurpose diffusion priors for deterministic estimation. To democratize this, code and models have been publicly available in hf.co/Stable-X",
+                    "authors": [
+                      "Chongjie Ye",
+                      "Lingteng Qiu",
+                      "Xiaodong Gu",
+                      "Qi Zuo",
+                      "Yushuang Wu",
+                      "Zilong Dong",
+                      "Liefeng Bo",
+                      "Yuliang Xiu",
+                      "Xiaoguang Han"
+                    ],
+                    "published": "2024-06-24T17:59:58Z",
+                    "updated": "2024-06-24T17:59:58Z",
+                    "url": "http://arxiv.org/abs/2406.16864v1",
+                    "pdf_url": "https://arxiv.org/pdf/2406.16864v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CV",
+                    "categories": [
+                      "cs.CV",
+                      "cs.AI",
+                      "cs.GR"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2302.04304v3",
+                    "title": "Q-Diffusion: Quantizing Diffusion Models",
+                    "summary": "Diffusion models have achieved great success in image synthesis through iterative noise estimation using deep neural networks. However, the slow inference, high memory consumption, and computation intensity of the noise estimation model hinder the efficient adoption of diffusion models. Although post-training quantization (PTQ) is considered a go-to compression method for other tasks, it does not work out-of-the-box on diffusion models. We propose a novel PTQ method specifically tailored towards the unique multi-timestep pipeline and model architecture of the diffusion models, which compresses the noise estimation network to accelerate the generation process. We identify the key difficulty of diffusion model quantization as the changing output distributions of noise estimation networks over multiple time steps and the bimodal activation distribution of the shortcut layers within the noise estimation network. We tackle these challenges with timestep-aware calibration and split shortcut quantization in this work. Experimental results show that our proposed method is able to quantize full-precision unconditional diffusion models into 4-bit while maintaining comparable performance (small FID change of at most 2.34 compared to >100 for traditional PTQ) in a training-free manner. Our approach can also be applied to text-guided image generation, where we can run stable diffusion in 4-bit weights with high generation quality for the first time.",
+                    "authors": [
+                      "Xiuyu Li",
+                      "Yijiang Liu",
+                      "Long Lian",
+                      "Huanrui Yang",
+                      "Zhen Dong",
+                      "Daniel Kang",
+                      "Shanghang Zhang",
+                      "Kurt Keutzer"
+                    ],
+                    "published": "2023-02-08T19:38:59Z",
+                    "updated": "2023-06-08T09:21:05Z",
+                    "url": "http://arxiv.org/abs/2302.04304v3",
+                    "pdf_url": "https://arxiv.org/pdf/2302.04304v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CV",
+                    "categories": [
+                      "cs.CV",
+                      "cs.LG"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some recent papers related to \"Stable Diffusion\" from arXiv:\n\n1. **[Stable Diffusion Segmentation for Biomedical Images with Single-step Reverse Process](http://arxiv.org/abs/2406.18361v3)**  \n   - **Authors**: Tianyu Lin, Zhiguang Chen, Zhonghao Yan, Weijiang Yu, Fudan Zheng  \n   - **Published**: 2024-06-26  \n   - **Summary**: This paper introduces SDSeg, a latent diffusion segmentation model that addresses challenges in medical image segmentation by utilizing a single-step reverse process. The model shows superior performance on benchmark datasets.  \n   - [PDF Link](https://arxiv.org/pdf/2406.18361v3)\n\n2. **[Stable-Sim2Real: Exploring Simulation of Real-Captured 3D Data with Two-Stage Depth Diffusion](http://arxiv.org/abs/2507.23483v1)**  \n   - **Authors**: Mutian Xu, Chongjie Ye, Haolin Liu, Yushuang Wu, Jiahao Chang, Xiaoguang Han  \n   - **Published**: 2025-07-31  \n   - **Summary**: This work presents a two-stage depth diffusion model for 3D data simulation, enhancing the realism of synthetic data for visual tasks.  \n   - [PDF Link](https://arxiv.org/pdf/2507.23483v1)\n\n3. **[Diffusion Policy Policy Optimization](http://arxiv.org/abs/2409.00588v3)**  \n   - **Authors**: Allen Z. Ren, Justin Lidard, Lars L. Ankile, Anthony Simeonov, Pulkit Agrawal, Anirudha Majumdar, Benjamin Burchfiel, Hongkai Dai, Max Simchowitz  \n   - **Published**: 2024-09-01  \n   - **Summary**: This paper introduces DPPO, an algorithmic framework for fine-tuning diffusion-based policies in reinforcement learning tasks, demonstrating strong performance and efficiency.  \n   - [PDF Link](https://arxiv.org/pdf/2409.00588v3)\n\n4. **[StableNormal: Reducing Diffusion Variance for Stable and Sharp Normal](http://arxiv.org/abs/2406.16864v1)**  \n   - **Authors**: Chongjie Ye, Lingteng Qiu, Xiaodong Gu, Qi Zuo, Yushuang Wu, Zilong Dong, Liefeng Bo, Yuliang Xiu, Xiaoguang Han  \n   - **Published**: 2024-06-24  \n   - **Summary**: This work presents StableNormal, which reduces inference variance in surface normal estimation from images, achieving high-quality results under challenging conditions.  \n   - [PDF Link](https://arxiv.org/pdf/2406.16864v1)\n\n5. **[Q-Diffusion: Quantizing Diffusion Models](http://arxiv.org/abs/2302.04304v3)**  \n   - **Authors**: Xiuyu Li, Yijiang Liu, Long Lian, Huanrui Yang, Zhen Dong, Daniel Kang, Shanghang Zhang, Kurt Keutzer  \n   - **Published**: 2023-02-08  \n   - **Summary**: This paper proposes a novel post-training quantization method for diffusion models, significantly reducing memory consumption while maintaining performance.  \n   - [PDF Link](https://arxiv.org/pdf/2302.04304v3)\n\nIf you need further details or specific information about any of these papers, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "Stable Diffusion",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "Stable Diffusion",
+            "api_query": "all:Stable AND all:Diffusion",
+            "total_results": 5920,
+            "items": [
+              {
+                "arxiv_id": "2406.18361v3",
+                "title": "Stable Diffusion Segmentation for Biomedical Images with Single-step Reverse Process",
+                "summary": "Diffusion models have demonstrated their effectiveness across various generative tasks. However, when applied to medical image segmentation, these models encounter several challenges, including significant resource and time requirements. They also necessitate a multi-step reverse process and multiple samples to produce reliable predictions. To address these challenges, we introduce the first latent diffusion segmentation model, named SDSeg, built upon stable diffusion (SD). SDSeg incorporates a straightforward latent estimation strategy to facilitate a single-step reverse process and utilizes latent fusion concatenation to remove the necessity for multiple samples. Extensive experiments indicate that SDSeg surpasses existing state-of-the-art methods on five benchmark datasets featuring diverse imaging modalities. Remarkably, SDSeg is capable of generating stable predictions with a solitary reverse step and sample, epitomizing the model's stability as implied by its name. The code is available at https://github.com/lin-tianyu/Stable-Diffusion-Seg",
+                "authors": [
+                  "Tianyu Lin",
+                  "Zhiguang Chen",
+                  "Zhonghao Yan",
+                  "Weijiang Yu",
+                  "Fudan Zheng"
+                ],
+                "published": "2024-06-26T14:01:07Z",
+                "updated": "2024-07-09T17:25:27Z",
+                "url": "http://arxiv.org/abs/2406.18361v3",
+                "pdf_url": "https://arxiv.org/pdf/2406.18361v3",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV",
+                  "cs.AI",
+                  "eess.IV"
+                ]
+              },
+              {
+                "arxiv_id": "2507.23483v1",
+                "title": "Stable-Sim2Real: Exploring Simulation of Real-Captured 3D Data with Two-Stage Depth Diffusion",
+                "summary": "3D data simulation aims to bridge the gap between simulated and real-captured 3D data, which is a fundamental problem for real-world 3D visual tasks. Most 3D data simulation methods inject predefined physical priors but struggle to capture the full complexity of real data. An optimal approach involves learning an implicit mapping from synthetic to realistic data in a data-driven manner, but progress in this solution has met stagnation in recent studies. This work explores a new solution path of data-driven 3D simulation, called Stable-Sim2Real, based on a novel two-stage depth diffusion model. The initial stage finetunes Stable-Diffusion to generate the residual between the real and synthetic paired depth, producing a stable but coarse depth, where some local regions may deviate from realistic patterns. To enhance this, both the synthetic and initial output depth are fed into a second-stage diffusion, where diffusion loss is adjusted to prioritize these distinct areas identified by a 3D discriminator. We provide a new benchmark scheme to evaluate 3D data simulation methods. Extensive experiments show that training the network with the 3D simulated data derived from our method significantly enhances performance in real-world 3D visual tasks. Moreover, the evaluation demonstrates the high similarity between our 3D simulated data and real-captured patterns. Project page: https://mutianxu.github.io/stable-sim2real/.",
+                "authors": [
+                  "Mutian Xu",
+                  "Chongjie Ye",
+                  "Haolin Liu",
+                  "Yushuang Wu",
+                  "Jiahao Chang",
+                  "Xiaoguang Han"
+                ],
+                "published": "2025-07-31T12:08:16Z",
+                "updated": "2025-07-31T12:08:16Z",
+                "url": "http://arxiv.org/abs/2507.23483v1",
+                "pdf_url": "https://arxiv.org/pdf/2507.23483v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV"
+                ]
+              },
+              {
+                "arxiv_id": "2409.00588v3",
+                "title": "Diffusion Policy Policy Optimization",
+                "summary": "We introduce Diffusion Policy Policy Optimization, DPPO, an algorithmic framework including best practices for fine-tuning diffusion-based policies (e.g. Diffusion Policy) in continuous control and robot learning tasks using the policy gradient (PG) method from reinforcement learning (RL). PG methods are ubiquitous in training RL policies with other policy parameterizations; nevertheless, they had been conjectured to be less efficient for diffusion-based policies. Surprisingly, we show that DPPO achieves the strongest overall performance and efficiency for fine-tuning in common benchmarks compared to other RL methods for diffusion-based policies and also compared to PG fine-tuning of other policy parameterizations. Through experimental investigation, we find that DPPO takes advantage of unique synergies between RL fine-tuning and the diffusion parameterization, leading to structured and on-manifold exploration, stable training, and strong policy robustness. We further demonstrate the strengths of DPPO in a range of realistic settings, including simulated robotic tasks with pixel observations, and via zero-shot deployment of simulation-trained policies on robot hardware in a long-horizon, multi-stage manipulation task. Website with code: diffusion-ppo.github.io",
+                "authors": [
+                  "Allen Z. Ren",
+                  "Justin Lidard",
+                  "Lars L. Ankile",
+                  "Anthony Simeonov",
+                  "Pulkit Agrawal",
+                  "Anirudha Majumdar",
+                  "Benjamin Burchfiel",
+                  "Hongkai Dai",
+                  "Max Simchowitz"
+                ],
+                "published": "2024-09-01T02:47:50Z",
+                "updated": "2024-12-09T21:30:07Z",
+                "url": "http://arxiv.org/abs/2409.00588v3",
+                "pdf_url": "https://arxiv.org/pdf/2409.00588v3",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "2406.16864v1",
+                "title": "StableNormal: Reducing Diffusion Variance for Stable and Sharp Normal",
+                "summary": "This work addresses the challenge of high-quality surface normal estimation from monocular colored inputs (i.e., images and videos), a field which has recently been revolutionized by repurposing diffusion priors. However, previous attempts still struggle with stochastic inference, conflicting with the deterministic nature of the Image2Normal task, and costly ensembling step, which slows down the estimation process. Our method, StableNormal, mitigates the stochasticity of the diffusion process by reducing inference variance, thus producing \"Stable-and-Sharp\" normal estimates without any additional ensembling process. StableNormal works robustly under challenging imaging conditions, such as extreme lighting, blurring, and low quality. It is also robust against transparent and reflective surfaces, as well as cluttered scenes with numerous objects. Specifically, StableNormal employs a coarse-to-fine strategy, which starts with a one-step normal estimator (YOSO) to derive an initial normal guess, that is relatively coarse but reliable, then followed by a semantic-guided refinement process (SG-DRN) that refines the normals to recover geometric details. The effectiveness of StableNormal is demonstrated through competitive performance in standard datasets such as DIODE-indoor, iBims, ScannetV2 and NYUv2, and also in various downstream tasks, such as surface reconstruction and normal enhancement. These results evidence that StableNormal retains both the \"stability\" and \"sharpness\" for accurate normal estimation. StableNormal represents a baby attempt to repurpose diffusion priors for deterministic estimation. To democratize this, code and models have been publicly available in hf.co/Stable-X",
+                "authors": [
+                  "Chongjie Ye",
+                  "Lingteng Qiu",
+                  "Xiaodong Gu",
+                  "Qi Zuo",
+                  "Yushuang Wu",
+                  "Zilong Dong",
+                  "Liefeng Bo",
+                  "Yuliang Xiu",
+                  "Xiaoguang Han"
+                ],
+                "published": "2024-06-24T17:59:58Z",
+                "updated": "2024-06-24T17:59:58Z",
+                "url": "http://arxiv.org/abs/2406.16864v1",
+                "pdf_url": "https://arxiv.org/pdf/2406.16864v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV",
+                  "cs.AI",
+                  "cs.GR"
+                ]
+              },
+              {
+                "arxiv_id": "2302.04304v3",
+                "title": "Q-Diffusion: Quantizing Diffusion Models",
+                "summary": "Diffusion models have achieved great success in image synthesis through iterative noise estimation using deep neural networks. However, the slow inference, high memory consumption, and computation intensity of the noise estimation model hinder the efficient adoption of diffusion models. Although post-training quantization (PTQ) is considered a go-to compression method for other tasks, it does not work out-of-the-box on diffusion models. We propose a novel PTQ method specifically tailored towards the unique multi-timestep pipeline and model architecture of the diffusion models, which compresses the noise estimation network to accelerate the generation process. We identify the key difficulty of diffusion model quantization as the changing output distributions of noise estimation networks over multiple time steps and the bimodal activation distribution of the shortcut layers within the noise estimation network. We tackle these challenges with timestep-aware calibration and split shortcut quantization in this work. Experimental results show that our proposed method is able to quantize full-precision unconditional diffusion models into 4-bit while maintaining comparable performance (small FID change of at most 2.34 compared to >100 for traditional PTQ) in a training-free manner. Our approach can also be applied to text-guided image generation, where we can run stable diffusion in 4-bit weights with high generation quality for the first time.",
+                "authors": [
+                  "Xiuyu Li",
+                  "Yijiang Liu",
+                  "Long Lian",
+                  "Huanrui Yang",
+                  "Zhen Dong",
+                  "Daniel Kang",
+                  "Shanghang Zhang",
+                  "Kurt Keutzer"
+                ],
+                "published": "2023-02-08T19:38:59Z",
+                "updated": "2023-06-08T09:21:05Z",
+                "url": "http://arxiv.org/abs/2302.04304v3",
+                "pdf_url": "https://arxiv.org/pdf/2302.04304v3",
+                "source": "arxiv.org",
+                "primary_category": "cs.CV",
+                "categories": [
+                  "cs.CV",
+                  "cs.LG"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:58:21"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-06-02T16:59:06",
+      "user": "Summary this link http://arxiv.org/abs/2302.04304v3",
+      "status": "answered",
+      "assistant_text": "Here is a summary of the paper titled **\"Q-Diffusion: Quantizing Diffusion Models\"**:\n\n- **Authors**: Xiuyu Li, Yijiang Liu, Long Lian, Huanrui Yang, Zhen Dong, Daniel Kang, Shanghang Zhang, Kurt Keutzer\n- **Published**: June 8, 2023\n- **Abstract**: The paper addresses the challenges of slow inference, high memory consumption, and computational intensity in diffusion models used for image synthesis. It introduces a novel post-training quantization (PTQ) method specifically designed for the unique architecture and multi-timestep pipeline of diffusion models. The authors identify key difficulties in quantizing diffusion models, such as changing output distributions of noise estimation networks and bimodal activation distributions in shortcut layers. They propose solutions like timestep-aware calibration and split shortcut quantization. Experimental results demonstrate that their method can quantize full-precision unconditional diffusion models to 4-bit while maintaining comparable performance, achieving a small FID change of at most 2.34, significantly better than traditional PTQ methods. The approach is also applicable to text-guided image generation, enabling stable diffusion with 4-bit weights while preserving high generation quality.\n\nFor more details, you can view the full paper [here](https://arxiv.org/pdf/2302.04304v3).",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "fetch",
+              "args": {
+                "url": "http://arxiv.org/abs/2302.04304v3"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "fetch",
+              "args": {
+                "url": "http://arxiv.org/abs/2302.04304v3"
+              },
+              "result": {
+                "tool": "read_url",
+                "url": "http://arxiv.org/abs/2302.04304v3",
+                "items": [
+                  {
+                    "title": "[2302.04304v3] Q-Diffusion: Quantizing Diffusion Models",
+                    "url": "http://arxiv.org/abs/2302.04304v3",
+                    "source": "arxiv.org",
+                    "summary": "# Computer Science > Computer Vision and Pattern Recognition\n\n**arXiv:2302.04304v3** (cs)\n\n\n\\[Submitted on 8 Feb 2023 ( [v1](https://arxiv.org/abs/2302.04304v1)), last revised 8 Jun 2023 (this version, v3)\\]\n\n# Title:Q-Diffusion: Quantizing Diffusion Models\n\nAuthors: [Xiuyu Li](https://arxiv.org/search/cs?searchtype=author&query=Li,+X), [Yijiang Liu](https://arxiv.org/search/cs?searchtype=author&query=Liu,+Y), [Long Lian](https://arxiv.org/search/cs?searchtype=author&query=Lian,+L), [Huanrui Yang](https://arxiv.org/search/cs?searchtype=author&query=Yang,+H), [Zhen Dong](https://arxiv.org/search/cs?searchtype=author&query=Dong,+Z), [Daniel Kang](https://arxiv.org/search/cs?searchtype=author&query=Kang,+D), [Shanghang Zhang](https://arxiv.org/search/cs?searchtype=author&query=Zhang,+S), [Kurt Keutzer](https://arxiv.org/search/cs?searchtype=author&query=Keutzer,+K)\n\nView a PDF of the paper titled Q-Diffusion: Quantizing Diffusion Models, by Xiuyu Li and 7 other authors\n\n[View PDF](https://arxiv.org/pdf/2302.04304v3)\n\n> Abstract:Diffusion models have achieved great success in image synthesis through iterative noise estimation using deep neural networks. However, the slow inference, high memory consumption, and computation intensity of the noise estimation model hinder the efficient adoption of diffusion models. Although post-training quantization (PTQ) is considered a go-to compression method for other tasks, it does not work out-of-the-box on diffusion models. We propose a novel PTQ method specifically tailored towards the unique multi-timestep pipeline and model architecture of the diffusion models, which compresses the noise estimation network to accelerate the generation process. We identify the key difficulty of diffusion model quantization as the changing output distributions of noise estimation networks over multiple time steps and the bimodal activation distribution of the shortcut layers within the noise estimation network. We tackle these challenges with timestep-aware calibration and split shortcut quantization in this work. Experimental results show that our proposed method is able to quantize full-precision unconditional diffusion models into 4-bit while maintaining comparable performance (small FID change of at most 2.34 compared to >100 for traditional PTQ) in a training-free manner. Our approach can also be applied to text-guided image generation, where we can run stable diffusion in 4-bit weights with high generation quality for the first time.\n\n|     |     |\n| --- | --- |\n| Comments: | The code is available at [this https URL](https://github.com/Xiuyu-Li/q-diffusion) |\n| Subjects: | Computer Vision and Pattern Recognition (cs.CV); Machine Learning (cs.LG) |\n| Cite as: | [arXiv:2302.04304](https://arxiv.org/abs/2302.04304) \\[cs.CV\\] |\n|  | (or [arXiv:2302.04304v3](https://arxiv.org/abs/2302.04304v3) \\[cs.CV\\] for this version) |\n|  | [https://doi.org/10.48550/arXiv.2302.04304](https://doi.org/10.48550/arXiv.2302.04304)<br>Focus to learn more<br>arXiv-issued DOI via DataCite |\n\n## Submission history\n\nFrom: Xiuyu Li \\[ [view email](https://arxiv.org/show-email/30ce9c82/2302.04304)\\]\n\n**[\\[v1\\]](https://arxiv.org/abs/2302.04304v1)**\nWed, 8 Feb 2023 19:38:59 UTC (39,008 KB)\n\n**[\\[v2\\]](https://arxiv.org/abs/2302.04304v2)**\nFri, 10 Feb 2023 09:44:48 UTC (39,004 KB)\n\n**\\[v3\\]**\nThu, 8 Jun 2023 09:21:05 UTC (11,591 KB)\n\nFull-text links:\n\n## Access Paper:\n\nView a PDF of the paper titled Q-Diffusion: Quantizing Diffusion Models, by Xiuyu Li and 7 other authors\n\n- [View PDF](https://arxiv.org/pdf/2302.04304v3)\n- [TeX Source](https://arxiv.org/src/2302.04304v3)\n\n[view license](http://arxiv.org/licenses/nonexclusive-distrib/1.0/ \"Rights to this article\")\n\n### Current browse context:\n\ncs.CV\n\n[< prev](https://arxiv.org/prevnext?id=2302.04304&function=prev&context=cs.CV \"previous in cs.CV (accesskey p)\")  \\|  [next >](https://arxiv.org/prevnext?id=2302.04304&function=next&context=cs.CV \"next in cs.CV (accesskey n)\")\n\n[new](https"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here is a summary of the paper titled **\"Q-Diffusion: Quantizing Diffusion Models\"**:\n\n- **Authors**: Xiuyu Li, Yijiang Liu, Long Lian, Huanrui Yang, Zhen Dong, Daniel Kang, Shanghang Zhang, Kurt Keutzer\n- **Published**: June 8, 2023\n- **Abstract**: The paper addresses the challenges of slow inference, high memory consumption, and computational intensity in diffusion models used for image synthesis. It introduces a novel post-training quantization (PTQ) method specifically designed for the unique architecture and multi-timestep pipeline of diffusion models. The authors identify key difficulties in quantizing diffusion models, such as changing output distributions of noise estimation networks and bimodal activation distributions in shortcut layers. They propose solutions like timestep-aware calibration and split shortcut quantization. Experimental results demonstrate that their method can quantize full-precision unconditional diffusion models to 4-bit while maintaining comparable performance, achieving a small FID change of at most 2.34, significantly better than traditional PTQ methods. The approach is also applicable to text-guided image generation, enabling stable diffusion with 4-bit weights while preserving high generation quality.\n\nFor more details, you can view the full paper [here](https://arxiv.org/pdf/2302.04304v3).",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "http://arxiv.org/abs/2302.04304v3"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "http://arxiv.org/abs/2302.04304v3",
+            "items": [
+              {
+                "title": "[2302.04304v3] Q-Diffusion: Quantizing Diffusion Models",
+                "url": "http://arxiv.org/abs/2302.04304v3",
+                "source": "arxiv.org",
+                "summary": "# Computer Science > Computer Vision and Pattern Recognition\n\n**arXiv:2302.04304v3** (cs)\n\n\n\\[Submitted on 8 Feb 2023 ( [v1](https://arxiv.org/abs/2302.04304v1)), last revised 8 Jun 2023 (this version, v3)\\]\n\n# Title:Q-Diffusion: Quantizing Diffusion Models\n\nAuthors: [Xiuyu Li](https://arxiv.org/search/cs?searchtype=author&query=Li,+X), [Yijiang Liu](https://arxiv.org/search/cs?searchtype=author&query=Liu,+Y), [Long Lian](https://arxiv.org/search/cs?searchtype=author&query=Lian,+L), [Huanrui Yang](https://arxiv.org/search/cs?searchtype=author&query=Yang,+H), [Zhen Dong](https://arxiv.org/search/cs?searchtype=author&query=Dong,+Z), [Daniel Kang](https://arxiv.org/search/cs?searchtype=author&query=Kang,+D), [Shanghang Zhang](https://arxiv.org/search/cs?searchtype=author&query=Zhang,+S), [Kurt Keutzer](https://arxiv.org/search/cs?searchtype=author&query=Keutzer,+K)\n\nView a PDF of the paper titled Q-Diffusion: Quantizing Diffusion Models, by Xiuyu Li and 7 other authors\n\n[View PDF](https://arxiv.org/pdf/2302.04304v3)\n\n> Abstract:Diffusion models have achieved great success in image synthesis through iterative noise estimation using deep neural networks. However, the slow inference, high memory consumption, and computation intensity of the noise estimation model hinder the efficient adoption of diffusion models. Although post-training quantization (PTQ) is considered a go-to compression method for other tasks, it does not work out-of-the-box on diffusion models. We propose a novel PTQ method specifically tailored towards the unique multi-timestep pipeline and model architecture of the diffusion models, which compresses the noise estimation network to accelerate the generation process. We identify the key difficulty of diffusion model quantization as the changing output distributions of noise estimation networks over multiple time steps and the bimodal activation distribution of the shortcut layers within the noise estimation network. We tackle these challenges with timestep-aware calibration and split shortcut quantization in this work. Experimental results show that our proposed method is able to quantize full-precision unconditional diffusion models into 4-bit while maintaining comparable performance (small FID change of at most 2.34 compared to >100 for traditional PTQ) in a training-free manner. Our approach can also be applied to text-guided image generation, where we can run stable diffusion in 4-bit weights with high generation quality for the first time.\n\n|     |     |\n| --- | --- |\n| Comments: | The code is available at [this https URL](https://github.com/Xiuyu-Li/q-diffusion) |\n| Subjects: | Computer Vision and Pattern Recognition (cs.CV); Machine Learning (cs.LG) |\n| Cite as: | [arXiv:2302.04304](https://arxiv.org/abs/2302.04304) \\[cs.CV\\] |\n|  | (or [arXiv:2302.04304v3](https://arxiv.org/abs/2302.04304v3) \\[cs.CV\\] for this version) |\n|  | [https://doi.org/10.48550/arXiv.2302.04304](https://doi.org/10.48550/arXiv.2302.04304)<br>Focus to learn more<br>arXiv-issued DOI via DataCite |\n\n## Submission history\n\nFrom: Xiuyu Li \\[ [view email](https://arxiv.org/show-email/30ce9c82/2302.04304)\\]\n\n**[\\[v1\\]](https://arxiv.org/abs/2302.04304v1)**\nWed, 8 Feb 2023 19:38:59 UTC (39,008 KB)\n\n**[\\[v2\\]](https://arxiv.org/abs/2302.04304v2)**\nFri, 10 Feb 2023 09:44:48 UTC (39,004 KB)\n\n**\\[v3\\]**\nThu, 8 Jun 2023 09:21:05 UTC (11,591 KB)\n\nFull-text links:\n\n## Access Paper:\n\nView a PDF of the paper titled Q-Diffusion: Quantizing Diffusion Models, by Xiuyu Li and 7 other authors\n\n- [View PDF](https://arxiv.org/pdf/2302.04304v3)\n- [TeX Source](https://arxiv.org/src/2302.04304v3)\n\n[view license](http://arxiv.org/licenses/nonexclusive-distrib/1.0/ \"Rights to this article\")\n\n### Current browse context:\n\ncs.CV\n\n[< prev](https://arxiv.org/prevnext?id=2302.04304&function=prev&context=cs.CV \"previous in cs.CV (accesskey p)\")  \\|  [next >](https://arxiv.org/prevnext?id=2302.04304&function=next&context=cs.CV \"next in cs.CV (accesskey n)\")\n\n[new](https"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:59:06"
+    }
+  ]
+}
