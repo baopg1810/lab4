@@ -1,0 +1,584 @@
+{
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_user_tweets_handle_map",
+      "phase": "B",
+      "suite": "group",
+      "query": "Cho mình xem 5 tweet mới nhất của Andrej Karpathy",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "karpathy",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_user_tweets_name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Map tên Andrej Karpathy → handle karpathy, trích đúng limit=5, gọi get_user_tweets."
+      }
+    },
+    {
+      "id": "G02_search_tweets_latest",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm các tweet mới nhất về Gemini AI",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Gemini AI",
+              "search_type": "Latest"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_search_type",
+        "difficulty": "medium",
+        "what_it_tests": "'mới nhất' → search_type=Latest, không phải Top."
+      }
+    },
+    {
+      "id": "G03_read_url_no_search",
+      "phase": "B",
+      "suite": "group",
+      "query": "Đọc và tóm tắt nội dung trang này: https://deepmind.google/technologies/gemini/",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://deepmind.google/technologies/gemini/"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_read_url",
+        "difficulty": "easy",
+        "what_it_tests": "Có link cụ thể → read_url, không gọi web_search."
+      }
+    },
+    {
+      "id": "G04_out_of_scope_weather",
+      "phase": "B",
+      "suite": "group",
+      "query": "Thời tiết Hà Nội ngày mai thế nào?",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "metadata": {
+        "skill": "out_of_scope",
+        "difficulty": "easy",
+        "what_it_tests": "Câu hỏi thời tiết ngoài phạm vi research/news → KHÔNG gọi tool, từ chối/định hướng."
+      }
+    },
+    {
+      "id": "G05_parallel_user_and_search",
+      "phase": "B",
+      "suite": "group",
+      "query": "Lấy tweet của Yann LeCun và tìm thêm tweet chủ đề AI safety.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "ylecun"
+            }
+          },
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI safety"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "parallel_tool_calls",
+        "difficulty": "hard",
+        "what_it_tests": "Một request cần hai nguồn: get_user_tweets(ylecun) song song với search_tweets(AI safety)."
+      }
+    },
+    {
+      "id": "G06_multiturn_missing_topic",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tin tức trong tháng này giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Về chủ đề blockchain"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm blockchain thôi, vẫn là tháng này nhé"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "blockchain",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_fill",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry timeframe=month từ lượt 1, bổ sung query=blockchain từ lượt 2, xác nhận ở lượt 3."
+      }
+    },
+    {
+      "id": "G07_multiturn_correction_person",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tweet mới nhất của Bill Gates là gì?"
+        },
+        {
+          "role": "user",
+          "content": "Nhầm rồi, mình muốn xem của Sundar Pichai"
+        },
+        {
+          "role": "user",
+          "content": "Lấy 7 tweet nhé"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sundarpichai",
+              "limit": 7
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: bỏ qua Bill Gates, sửa sang Sundar Pichai → handle sundarpichai, carry limit=7 từ lượt 3."
+      }
+    },
+    {
+      "id": "G08_multiturn_carryover_search_type",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet phổ biến nhất về ChatGPT"
+        },
+        {
+          "role": "user",
+          "content": "Đổi chủ đề sang Claude AI đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn lấy tweet phổ biến nhất thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Claude AI",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carryover",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry search_type=Top từ lượt 1, chỉ đổi query=Claude AI theo lượt 2+3."
+      }
+    },
+    {
+      "id": "G09_multiturn_clarify_url_then_fetch",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài báo mình vừa gửi"
+        },
+        {
+          "role": "user",
+          "content": "https://techcrunch.com/2025/01/ai-agents"
+        },
+        {
+          "role": "user",
+          "content": "Đọc đúng link đó, đừng tìm thêm gì khác"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://techcrunch.com/2025/01/ai-agents"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_url",
+        "difficulty": "medium",
+        "what_it_tests": "3 turns: lượt 1 thiếu URL → lượt 2 cung cấp URL → lượt 3 xác nhận → read_url đúng link."
+      }
+    },
+    {
+      "id": "G10_multiturn_switch_to_twitter",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tin tức mới nhất về Meta AI hôm nay"
+        },
+        {
+          "role": "user",
+          "content": "Thôi bỏ web, chuyển qua tìm tweet về Meta AI đi"
+        },
+        {
+          "role": "user",
+          "content": "Lấy tweet top nhất nhé"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Meta AI",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_switch_tool",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: chuyển từ web_search sang search_tweets, giữ chủ đề Meta AI, carry search_type=Top từ lượt 3."
+      }
+    },
+    {
+      "id": "G11_search_top_not_latest",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm những tweet nổi bật nhất về GPT-5",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "GPT-5",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_search_type_top",
+        "difficulty": "easy",
+        "what_it_tests": "'nổi bật nhất' → search_type=Top, không phải Latest. Model dễ sai khi nghe 'mới nhất' trong bối cảnh khác."
+      }
+    },
+    {
+      "id": "G12_unnecessary_tool_greet",
+      "phase": "B",
+      "suite": "group",
+      "query": "Xin chào, bạn có thể giúp tôi tìm hiểu về AI không?",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true,
+        "behavior": "respond_directly"
+      },
+      "metadata": {
+        "skill": "unnecessary_tool",
+        "difficulty": "easy",
+        "what_it_tests": "Câu chào hỏi chung chung không cần gọi tool nào, chỉ cần trả lời trực tiếp."
+      }
+    },
+    {
+      "id": "G13_fetch_arxiv_paper",
+      "phase": "B",
+      "suite": "group",
+      "query": "Đọc nội dung bài báo này: https://arxiv.org/abs/2312.11805",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://arxiv.org/abs/2312.11805"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_read_url_arxiv",
+        "difficulty": "easy",
+        "what_it_tests": "URL arxiv cụ thể → dùng fetch/read_url, không web_search."
+      }
+    },
+    {
+      "id": "G14_wrong_boundary_limit_over_100",
+      "phase": "B",
+      "suite": "group",
+      "query": "Lấy 200 tweet mới nhất của Sam Altman",
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 100
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "boundary_limit_cap",
+        "difficulty": "medium",
+        "what_it_tests": "User yêu cầu 200 tweet nhưng API chỉ cho phép tối đa 100 → phải cap limit=100, map tên Sam Altman → handle sama."
+      }
+    },
+    {
+      "id": "G15_out_of_scope_stock_price",
+      "phase": "B",
+      "suite": "group",
+      "query": "Giá cổ phiếu NVIDIA hôm nay là bao nhiêu?",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "metadata": {
+        "skill": "out_of_scope_finance",
+        "difficulty": "easy",
+        "what_it_tests": "Câu hỏi về giá cổ phiếu ngoài phạm vi → không gọi tool, từ chối và hướng dẫn."
+      }
+    },
+    {
+      "id": "G16_multiturn_limit_carryover",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Cho mình 10 tweet mới nhất của Elon Musk"
+        },
+        {
+          "role": "user",
+          "content": "Bây giờ lấy của Jeff Bezos đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn lấy 10 tweet nhé"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "JeffBezos",
+              "limit": 10
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carryover_limit",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry limit=10 từ lượt 1, chuyển người sang Jeff Bezos → handle JeffBezos, xác nhận limit ở lượt 3."
+      }
+    },
+    {
+      "id": "G17_multiturn_scope_then_outofscope",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về React 19"
+        },
+        {
+          "role": "user",
+          "content": "OK cảm ơn. Tiện thể cho mình biết cách nấu phở không?"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần công thức thôi"
+        }
+      ],
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "metadata": {
+        "skill": "multiturn_detect_scope_switch",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 hợp lệ, lượt 2+3 chuyển sang nấu ăn ngoài phạm vi → phải từ chối, không gọi tool."
+      }
+    },
+    {
+      "id": "G18_multiturn_parallel_after_correction",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về Python và cũng lấy tweet của Guido van Rossum"
+        },
+        {
+          "role": "user",
+          "content": "Nhầm, đổi Python thành Rust nhé, còn Guido giữ nguyên"
+        },
+        {
+          "role": "user",
+          "content": "OK đúng rồi, chạy đi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Rust"
+            }
+          },
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "gvanrossum"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_parallel_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: sửa query Python→Rust, giữ nguyên get_user_tweets(gvanrossum), chạy song song sau khi xác nhận."
+      }
+    },
+    {
+      "id": "G19_multiturn_missing_url_clarify",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài viết trên blog của OpenAI về o3"
+        },
+        {
+          "role": "user",
+          "content": "Link là https://openai.com/blog/o3"
+        },
+        {
+          "role": "user",
+          "content": "Đọc đúng link đó thôi, đừng search thêm"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/blog/o3"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_url_fetch",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 thiếu URL → lượt 2 cung cấp link → lượt 3 xác nhận chỉ fetch, không web_search thêm."
+      }
+    },
+    {
+      "id": "G20_multiturn_unnecessary_then_valid",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Chào buổi sáng!"
+        },
+        {
+          "role": "user",
+          "content": "Bạn có thể tìm tweet về LLM không?"
+        },
+        {
+          "role": "user",
+          "content": "Tìm tweet mới nhất về LLM nhé"
+        }
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "LLM",
+              "search_type": "Latest"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_skip_greeting_then_act",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 1 chỉ là chào hỏi (không gọi tool), lượt 2+3 mới có yêu cầu thực sự → search_tweets(LLM, Latest)."
+      }
+    }
+  ]
+}
