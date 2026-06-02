@@ -122,7 +122,8 @@ tools:
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Từ khóa tìm kiếm (ví dụ: 'crewai agents', 'fastapi mcp')"}
+        query: {type: string, default: "", description: "Từ khóa tìm kiếm (ví dụ: 'crewai agents', 'fastapi mcp'). Có thể để trống nếu chỉ tìm các repository nổi bật chung."}
         sort_by: {type: string, enum: [stars, forks, updated], default: "stars", description: "Tiêu chí sắp xếp"}
         limit: {type: integer, default: 5, description: "Số lượng repository tối đa trả về"}
+        timeframe: {type: string, enum: [day, week, month, year, all], default: "all", description: "Khoảng thời gian tạo repository (ví dụ: 'week' cho trong tuần)"}
       required: [query]

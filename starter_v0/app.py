@@ -342,6 +342,24 @@ if st.session_state.transcript is None:
 with st.sidebar:
     st.markdown("### Lịch sử trò chuyện")
     
+    if st.button("➕ Cuộc trò chuyện mới", key="new_chat_btn", use_container_width=True):
+        new_id = generate_thread_id()
+        st.session_state.threads[new_id] = {
+            "title": "Cuộc trò chuyện mới",
+            "history": [],
+            "chat_history": []
+        }
+        st.session_state.current_thread_id = new_id
+        st.session_state.history = []
+        st.session_state.chat_history = []
+        st.session_state.waiting_for_clarification = False
+        st.session_state.clarification_data = None
+        st.session_state.transcript = None
+        save_threads(st.session_state.threads)
+        st.rerun()
+        
+    st.markdown("---")
+    
     for thread_id in reversed(list(st.session_state.threads.keys())):
         thread_title = st.session_state.threads[thread_id].get("title", "Chat")
         is_active = thread_id == st.session_state.current_thread_id

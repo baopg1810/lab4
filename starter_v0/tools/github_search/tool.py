@@ -7,7 +7,10 @@ import requests
 from tools._shared import TIMEOUT, err
 
 
-def github_search(query: str = "", sort_by: str = "stars", limit: int = 5) -> dict[str, Any]:
+import datetime
+
+
+def github_search(query: str = "", sort_by: str = "stars", limit: int = 5, timeframe: str = "all") -> dict[str, Any]:
     """Search for open-source repositories on GitHub."""
     try:
         url = "https://api.github.com/search/repositories"
@@ -19,8 +22,29 @@ def github_search(query: str = "", sort_by: str = "stars", limit: int = 5) -> di
         if token:
             headers["Authorization"] = f"token {token}"
             
+        clean_query = query.strip() if query else ""
+        if not clean_query:
+            clean_query = "stars:>1"
+
+        if timeframe and timeframe != "all":
+            now = datetime.datetime.now()
+            if timeframe == "day":
+                delta = datetime.timedelta(days=1)
+            elif timeframe == "week":
+                delta = datetime.timedelta(weeks=1)
+            elif timeframe == "month":
+                delta = datetime.timedelta(days=30)
+            elif timeframe == "year":
+                delta = datetime.timedelta(days=365)
+            else:
+                delta = None
+
+            if delta:
+                date_str = (now - delta).strftime("%Y-%m-%d")
+                clean_query = f"{clean_query} created:>{date_str}"
+
         params = {
-            "q": query,
+            "q": clean_query,
             "sort": sort_by,
             "order": "desc",
             "per_page": int(limit or 5)
